@@ -3,7 +3,7 @@ import Foundation
 import ProjectDescription
 
 extension DeploymentTarget {
-  public static let defaultTarget: DeploymentTarget = .iOS(targetVersion: "15.0", devices: [.iphone, .ipad])
+  public static let defaultTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: [.iphone, .ipad])
 }
 
 extension String {
