@@ -11,7 +11,6 @@ public struct Step1View: View {
       Spacer()
       Asset.spongeBob.swiftUIImage
       Text("Step1 View")
-      Text("test")
       Text(Architecture().text)
       Spacer()
     }
