@@ -22,7 +22,6 @@ extension AppContainer {
     return .init(
       dependency: dependency,
       navigator: .init(
-        rootNavigator: .init(initialLinkItem: .init(path: .empty, items: .empty)),
         routeBuilderItemList: DemoRouterBuildGroup.realease,
         dependency: dependency))
   }

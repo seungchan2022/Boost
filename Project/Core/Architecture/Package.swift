@@ -31,7 +31,6 @@ let package = Package(
       "Platform",
       "LinkNavigator",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-//      .product(name: "CmposableArchitecture", package: "swift-composable-architecture"),
       ]),
     .testTarget(
       name: "ArchitectureTests",

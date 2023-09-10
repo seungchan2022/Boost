@@ -8,8 +8,11 @@ public struct DemoRouterBuildGroup<RootNavigator: LinkNavigatorURLEncodedItemPro
 extension DemoRouterBuildGroup {
   public static var realease: [RouteBuilderOf<RootNavigator, LinkNavigatorURLEncodedItemProtocol.ItemValue>] {
     [
-      Step1Router.generate(),
-      Step2Router.generate()
+      HomeRouter.generate(),
+      Page1Router.generate(),
+      Page2Router.generate(),
+      Page3Router.generate(),
+      Page4Router.generate(),
     ]
   }
 }
