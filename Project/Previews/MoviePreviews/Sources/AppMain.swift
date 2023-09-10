@@ -1,18 +1,17 @@
-import Movie
+import Architecture
 import SwiftUI
+import LinkNavigator
 
 @main
 struct AppMain: App {
 
+  @StateObject var viewModel = AppMainViewModel()
+  
   var body: some Scene {
     WindowGroup {
-      NavigationView {
-        VStack {
-          Spacer()
-          HomeView()
-          Spacer()
-        }
-      }
+      LinkNavigationView(
+        linkNavigator: viewModel.linkNavigator,
+        item: .init(path: Link.Movie.Path.home.rawValue, items: ""))
     }
   }
 }
