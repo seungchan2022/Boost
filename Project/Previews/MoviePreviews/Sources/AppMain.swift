@@ -12,6 +12,8 @@ struct AppMain: App {
       LinkNavigationView(
         linkNavigator: viewModel.linkNavigator,
         item: .init(path: Link.Movie.Path.home.rawValue, items: ""))
+      
+      .ignoresSafeArea()
     }
   }
 }
