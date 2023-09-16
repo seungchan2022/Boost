@@ -1,18 +1,26 @@
 import Foundation
 import SwiftUI
 
-extension MovieHomePage {
-  struct ItemListComponent {
+extension MyListsPage {
+  struct WishListsComponent {
     let viewState: ViewState
   }
 }
 
-extension MovieHomePage.ItemListComponent: View {
+extension MyListsPage.WishListsComponent: View {
   var body: some View {
+    
     ScrollView {
+      Text(viewState.text)
+        .font(.footnote)
+        .foregroundColor(Color(.gray))
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, 16)
+        .padding(.top, 20)
+        
       LazyVStack {
-        ForEach(viewState.itemList) { item  in
-          
+        
+        ForEach(viewState.seenList) { item  in
           HStack(spacing: 16) {
             Asset.spongeBob.swiftUIImage
               .resizable()
@@ -23,13 +31,13 @@ extension MovieHomePage.ItemListComponent: View {
                   .stroke(.black, lineWidth: 1)
               )
               .shadow(radius: 10)
-            
+
             VStack (alignment: .leading, spacing: 8){
               Text(item.title)
                 .font(.headline)
                 .fontWeight(.regular)
                 .foregroundColor(.customYellowColor)
-              
+
               HStack {
                 Circle()
                   .trim(from: 0, to: 0.75)
@@ -38,12 +46,12 @@ extension MovieHomePage.ItemListComponent: View {
                   .rotationEffect(.degrees(-90))
                   .frame(width: 40, height: 40)
                   .foregroundColor(Color.lineColor(item.voteAverage))
-                  .shadow(color:Color.lineColor(item.voteAverage), radius: 5, x: 0, y: 0)
+                  .shadow(color: Color.lineColor(item.voteAverage), radius: 5, x: 0, y: 0)
                   .overlay (
                     Text("\(Int(item.voteAverage * 100))%")
                       .font(.system(size: 10))
                   )
-                
+
                 Text(item.releaseDate)
                   .font(.subheadline)
               }
@@ -54,55 +62,40 @@ extension MovieHomePage.ItemListComponent: View {
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
             }
-            
+
             Spacer()
-            
+
             Image(systemName: "chevron.right")
               .resizable()
               .frame(width: 8, height: 12)
               .foregroundColor(Color(.gray))
               .padding(.trailing, 16)
           } // Hstack
-          .padding(.vertical, 8)
+          .padding(.vertical, 16)
           
           Divider()
             .padding(.leading, 144)
         }
       }
+      .padding(.leading, 16)
+      .background(Color.white)
     }
   }
 }
 
-extension MovieHomePage.ItemListComponent {
+extension MyListsPage.WishListsComponent {
   struct ViewState: Equatable {
-    let itemList: [MovieItem]
+    let text: String
+    let seenList: [MovieItem]
   }
 }
 
-extension MovieHomePage.ItemListComponent.ViewState {
+extension MyListsPage.WishListsComponent.ViewState {
   struct MovieItem: Equatable, Identifiable {
     let id = UUID()
     let title: String
     let voteAverage: Double
     let releaseDate: String
     let overView: String
-  }
-}
-
-extension Color {
-  public static var customYellowColor = Color(red: 0.75, green: 0.6, blue: 0.2)
-  
-  public static var customGreenColor = Color(red: 0.45, green: 0.64, blue: 0.62)
-  
-  public static var customBgColor = Color(red: 0.94, green: 0.94, blue: 0.96)
-  
-  static func lineColor(_ voteAverage: Double) -> Color {
-    if voteAverage >= 0.75 {
-      return .green
-    } else if voteAverage >= 0.50 {
-      return .yellow
-    } else {
-      return .red
-    }
   }
 }

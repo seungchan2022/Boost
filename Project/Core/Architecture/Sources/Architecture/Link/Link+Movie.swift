@@ -8,6 +8,8 @@ extension Link {
 extension Link.Movie {
   public enum Path: String, Equatable {
     case home = "movieHome"
+    case myLists = "myLists"
+    case movieDetail = "movieDetail"
   }
 }
 

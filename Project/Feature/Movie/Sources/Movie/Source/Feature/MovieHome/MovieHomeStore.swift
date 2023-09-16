@@ -14,8 +14,6 @@ extension MovieHomeStore {
   public struct State: Equatable {
     @BindingState var keyword = ""
     @BindingState var searchFocus: SearchType = .movies
-    
-    
   }
 }
 
