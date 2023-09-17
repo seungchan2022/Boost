@@ -5,5 +5,5 @@ struct MovieDetailMock {
   let useCaseGroup: MovieSideEffectGroup
 }
 
-extension MovieDetailMock: MovieHomeEnvType {
+extension MovieDetailMock: MovieDetailEnvType {
 }
