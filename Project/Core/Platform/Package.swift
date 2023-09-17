@@ -20,7 +20,12 @@ let package = Package(
       name: "Platform",
       dependencies: [
         "CombineNetwork"
-      ]),
+      ],
+    resources: [
+      .process("Resource/Mock/now_playing_1.json"),
+      .process("Resource/Mock/now_playing_2.json")
+    ]
+    ),
     .testTarget(
       name: "PlatformTests",
       dependencies: ["Platform"]),
