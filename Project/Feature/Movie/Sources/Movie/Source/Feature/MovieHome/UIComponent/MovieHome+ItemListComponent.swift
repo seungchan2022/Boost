@@ -1,9 +1,11 @@
 import Foundation
+import Domain
 import SwiftUI
 
 extension MovieHomePage {
   struct ItemListComponent {
     let viewState: ViewState
+    let nextPageAction: () -> Void
   }
 }
 
@@ -67,8 +69,18 @@ extension MovieHomePage.ItemListComponent: View {
           
           Divider()
             .padding(.leading, 144)
+            .onAppear {
+              guard viewState.lastID == item.id else { return }
+              nextPageAction()
+            }
         }
       }
+    }
+    .onAppear {
+      print("MovieHomePage.ItemListComponent onAppear")
+    }
+    .onDisappear {
+      print("MovieHomePage.ItemListComponent onDisappear")
     }
   }
 }
@@ -76,16 +88,31 @@ extension MovieHomePage.ItemListComponent: View {
 extension MovieHomePage.ItemListComponent {
   struct ViewState: Equatable {
     let itemList: [MovieItem]
+    let lastID: Int
+    
+    init(rawValue: [MovieDomain.MovieList.Response.ResultItem]) {
+      itemList = rawValue.map(MovieItem.init(rawValue:))
+      self.lastID = rawValue.last?.id ?? .zero
+    }
   }
 }
 
 extension MovieHomePage.ItemListComponent.ViewState {
   struct MovieItem: Equatable, Identifiable {
-    let id = UUID()
+    let id: Int
     let title: String
     let voteAverage: Double
     let releaseDate: String
     let overView: String
+    
+    init(rawValue: MovieDomain.MovieList.Response.ResultItem) {
+      self.id = rawValue.id
+      self.title = rawValue.title
+      self.voteAverage = rawValue.voteAverage
+      self.releaseDate = rawValue.releaseDate
+      self.overView = rawValue.overview
+    }
+    
   }
 }
 

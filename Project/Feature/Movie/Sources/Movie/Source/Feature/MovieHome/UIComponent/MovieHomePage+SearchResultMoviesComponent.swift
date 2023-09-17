@@ -2,12 +2,12 @@ import Foundation
 import SwiftUI
 
 extension MovieHomePage {
-  struct SearchResultMoviesComponenet {
+  struct SearchResultMoviesComponent {
     let viewState: ViewState
   }
 }
 
-extension MovieHomePage.SearchResultMoviesComponenet: View {
+extension MovieHomePage.SearchResultMoviesComponent: View {
   
   @ViewBuilder
   var keywordSection: some View {
@@ -133,14 +133,14 @@ extension MovieHomePage.SearchResultMoviesComponenet: View {
   }
 }
 
-extension MovieHomePage.SearchResultMoviesComponenet {
+extension MovieHomePage.SearchResultMoviesComponent {
   struct ViewState: Equatable {
     let itemList: [MovieItem]
     let keywordList: [String]
   }
 }
 
-extension MovieHomePage.SearchResultMoviesComponenet.ViewState {
+extension MovieHomePage.SearchResultMoviesComponent.ViewState {
   struct MovieItem: Equatable, Identifiable {
     let id = UUID()
     let title: String
