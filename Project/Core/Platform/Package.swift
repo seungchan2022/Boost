@@ -23,7 +23,10 @@ let package = Package(
       ],
     resources: [
       .process("Resource/Mock/now_playing_1.json"),
-      .process("Resource/Mock/now_playing_2.json")
+      .process("Resource/Mock/now_playing_2.json"),
+      .process("Resource/Mock/search_movie_1.json"),
+      .process("Resource/Mock/search_person_1.json"),
+      .process("Resource/Mock/search_keyword_1.json"),
     ]
     ),
     .testTarget(

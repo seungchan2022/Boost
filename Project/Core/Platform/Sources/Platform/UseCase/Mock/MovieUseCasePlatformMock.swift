@@ -28,7 +28,7 @@ extension MovieUseCasePlatformMock: MovieUseCase {
   public var nowPlaying: (MovieDomain.MovieList.Request.NowPlay)
   -> AnyPublisher<MovieDomain.MovieList.Response.NowPlay, CompositeErrorDomain> {
     { requestModel in
-      
+      print("AA ", requestModel.page)
       var response: MovieDomain.MovieList.Response.NowPlay {
         requestModel.page == 1 ? nowPlaying1Json : nowPlaying2Json
       }
