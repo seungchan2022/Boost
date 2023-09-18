@@ -10,6 +10,7 @@ extension MovieHomePage {
     
     let viewState: ViewState
     let keyword: Binding<String>
+    let isFocus: FocusState<Bool?>.Binding
     let throttleAction: () -> Void
     let clearAction: () -> Void
   }
@@ -25,10 +26,14 @@ extension MovieHomePage.SearchComponent: View {
       
       TextField(viewState.placeHolder, text: keyword)
         .textFieldStyle(RoundedBorderTextFieldStyle())
+        .focused(isFocus, equals: true)
         .padding(.trailing, 12)
       
       if !keyword.wrappedValue.isEmpty {
-        Button.init(action: { keyword.wrappedValue = "" }) {
+        Button.init(action: {
+          keyword.wrappedValue = ""
+          isFocus.wrappedValue = .none
+        }) {
           Text("Cancel")
             .font(.body)
             .foregroundColor(Color(.systemPink))
