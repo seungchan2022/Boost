@@ -1,28 +1,48 @@
 {
   "dates": {
-    "maximum": "2023-09-22",
-    "minimum": "2023-08-05"
+    "maximum": "2023-09-16",
+    "minimum": "2023-07-30"
   },
   "page": 2,
   "results": [
     {
       "adult": false,
-      "backdrop_path": "/hb0BeFvZNx2zLGWwuwENOIVeK1U.jpg",
+      "backdrop_path": "/jsgRkhPxYtzAhDFCUyNbvlX63tY.jpg",
       "genre_ids": [
-        35,
-        18,
-        36
+        10749,
+        10751,
+        16,
+        14
       ],
-      "id": 792293,
+      "id": 10020,
       "original_language": "en",
-      "original_title": "Dumb Money",
-      "overview": "Vlogger Keith Gill sinks his life savings into GameStop stock and posts about it. When social media starts blowing up, so do his life and the lives of everyone following him. As a stock tip becomes a movement, everyone gets rich—until the billionaires fight back, and both sides find their worlds turned upside down.",
-      "popularity": 36.37,
-      "poster_path": "/xYTymnjkVqhn3V66QmNJxFUesLT.jpg",
-      "release_date": "2023-09-15",
-      "title": "Dumb Money",
+      "original_title": "Beauty and the Beast",
+      "overview": "18세기 프랑스의 작은 마을, 밝고 아름다운 소녀 벨은 아버지와 함께 단 둘이 살고 있다. 마을 청년 개스톤은 벨의 미모에 반해 끈질기게 구애를 하지만, 벨은 책 읽기만 즐기며 평범한 시골생활에서 벗어나기를 꿈꾼다. 그러던 어느 날, 아버지가 흉측한 야수의 성에 갇히게 되는 일이 벌어지고 벨은 아버지를 구하기 위해 아버지 대신 자신이 성에 남기로 한다. 그녀를 경계하던 야수는 순수하고 아름다운 벨에게 조금씩 마음을 열게 되고, 벨 또한 흉측한 외모에 가려진 야수의 따뜻한 영혼을 발견하게 된다. 한편 질투심에 눈이 먼 개스톤은 야수를 없애기 위해 마을 사람들을 이끌고 야수의 성으로 향하는데...",
+      "popularity": 86.417,
+      "poster_path": "/xN8yuKcIIQEJo1Cuk6RuZpV64Uh.jpg",
+      "release_date": "2012-01-13",
+      "title": "미녀와 야수",
       "video": false,
-      "vote_average": 10,
+      "vote_average": 7.7,
+      "vote_count": 9244
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4TAKTbN3viFUERDGAvEF1iuSHVD.jpg",
+      "genre_ids": [
+        18,
+        10749
+      ],
+      "id": 500104,
+      "original_language": "en",
+      "original_title": "Aristotle and Dante Discover the Secrets of the Universe",
+      "overview": "",
+      "popularity": 86.099,
+      "poster_path": "/nqZx3FONbencjbjImxjJTCBn9Fw.jpg",
+      "release_date": "2023-09-08",
+      "title": "아리스토텔레스와 단테, 우주의 비밀을 발견하다",
+      "video": false,
+      "vote_average": 5.5,
       "vote_count": 2
     },
     {
@@ -35,33 +55,72 @@
       "id": 1077661,
       "original_language": "en",
       "original_title": "The Adults",
-      "overview": "Eric returns home for a short visit and finds himself caught between reuniting with his sisters and chasing a victory with his old poker group. As the trip extends, Eric finds it increasingly difficult to avoid confrontations and revelations as his carefully constructed façade of his adulthood gives way to old childhood conflicts.",
-      "popularity": 59.215,
+      "overview": "",
+      "popularity": 58.203,
       "poster_path": "/iA8HDbXgQE6RIEwqCMBZwPbpfxT.jpg",
       "release_date": "2023-08-18",
       "title": "The Adults",
       "video": false,
-      "vote_average": 6.9,
-      "vote_count": 22
+      "vote_average": 7,
+      "vote_count": 23
     },
     {
       "adult": false,
-      "backdrop_path": "/cOF7XiobQU4TC2tKDPXJ8d2nULP.jpg",
+      "backdrop_path": "/wcka0WH6otb1xueWk62Rpxqh3nm.jpg",
       "genre_ids": [
-        28,
-        53
+        35,
+        18
       ],
-      "id": 1024127,
+      "id": 937220,
       "original_language": "en",
-      "original_title": "King of Killers",
-      "overview": "Garan is a part of a group of international hitmen who are contracted to take out the most dangerous killer in the world, only to find out that they're the ones being hunted.",
-      "popularity": 37.774,
-      "poster_path": "/x5AreOAgkTBzUSL58o4jsYortw2.jpg",
-      "release_date": "2023-09-01",
-      "title": "King of Killers",
+      "original_title": "Bank of Dave",
+      "overview": "",
+      "popularity": 70.296,
+      "poster_path": "/6qRsmh6500c6piPbIcwc2VZ3E1n.jpg",
+      "release_date": "2023-08-25",
+      "title": "뱅크 오브 데이브",
       "video": false,
-      "vote_average": 5,
+      "vote_average": 6.9,
       "vote_count": 14
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/sK5jQDR5HxWoF9A9yNRdQf5hfcD.jpg",
+      "genre_ids": [
+        18,
+        36
+      ],
+      "id": 1002185,
+      "original_language": "en",
+      "original_title": "A Million Miles Away",
+      "overview": "우주를 여행한 최초의 이주 농장 노동자 멕시코계 미국인 호세 에르난데스의 이야기. 불가능한 꿈을 이루기 위한 인내, 공동체, 희생에 대한 이야기.",
+      "popularity": 56.473,
+      "poster_path": "/kMI3tgxLAZbzGOVlorUBva0kriS.jpg",
+      "release_date": "2023-09-08",
+      "title": "밀리언 마일스 어웨이",
+      "video": false,
+      "vote_average": 8,
+      "vote_count": 58
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/bYpmDDNatiGvqa4iShuw5xTpMYt.jpg",
+      "genre_ids": [
+        878,
+        35,
+        18
+      ],
+      "id": 1072371,
+      "original_language": "en",
+      "original_title": "Jules",
+      "overview": "",
+      "popularity": 78.292,
+      "poster_path": "/yMOWu8rpZPiBI0j8MInBTtNO0vU.jpg",
+      "release_date": "2023-08-11",
+      "title": "Jules",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 44
     },
     {
       "adult": false,
@@ -73,14 +132,33 @@
       "id": 977013,
       "original_language": "en",
       "original_title": "Haunting of the Queen Mary",
-      "overview": "When photographers Erin and Patrick are brought aboard the ship with their young son Lukas, they unleash a series of events that entwines their family with the ship’s dark past. As the terror unfolds around them they begin to realise there is more to this sumptuous ocean liner than meets the eye: its remarkable legacy masking violent secrets.",
-      "popularity": 46.359,
+      "overview": "",
+      "popularity": 36.634,
       "poster_path": "/1uNMAlNanIQohAofjyyad2WVCdk.jpg",
       "release_date": "2023-08-18",
       "title": "Haunting of the Queen Mary",
       "video": false,
       "vote_average": 5.5,
-      "vote_count": 21
+      "vote_count": 22
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/5SBgIj4PejTBe3gGMb2zTTCMkXB.jpg",
+      "genre_ids": [
+        35,
+        18
+      ],
+      "id": 800279,
+      "original_language": "en",
+      "original_title": "Corner Office",
+      "overview": "",
+      "popularity": 50.56,
+      "poster_path": "/rZfqjvxJNZAwUaQLvTPTsDGZWox.jpg",
+      "release_date": "2023-08-04",
+      "title": "코너 오피스",
+      "video": false,
+      "vote_average": 6.9,
+      "vote_count": 47
     },
     {
       "adult": false,
@@ -94,33 +172,32 @@
       "id": 670,
       "original_language": "ko",
       "original_title": "올드보이",
-      "overview": "With no clue how he came to be imprisoned, drugged and tortured for 15 years, a desperate businessman seeks revenge on his captors.",
-      "popularity": 44.747,
-      "poster_path": "/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
+      "overview": "오대수는 어느 날 술이 거나하게 취해 집에 돌아가는 길에 누군가에게 납치, 사설 감금방에 갇히게 된다. 중국집 군만두만을 먹으며 8평이라는 제한된 공간에서 그가 할 수 있는 일이라곤 텔레비전 보는 게 전부. 1년이 지났을 무렵, 뉴스를 통해 나오는 아내의 살해소식. 게다가 아내의 살인범으로 자신이 지목되고 있음을 알게 된 오대수는 복수와 탈출을 위해 감금방 한쪽 구석을 쇠젓가락으로 파기 시작한다. 감금 15년을 맞이하는 해, 마침내 사람 몸 하나 빠져나갈 만큼의 탈출구가 생겼을 때, 어이없게도 15년 전 납치됐던 바로 그 장소로 풀려나 있는 자신을 발견하게 된다.",
+      "popularity": 50.213,
+      "poster_path": "/xpa9ybm6tYGna5LseqSXvKpSSJn.jpg",
       "release_date": "2005-03-25",
-      "title": "Oldboy",
+      "title": "올드보이",
       "video": false,
       "vote_average": 8.3,
-      "vote_count": 7767
+      "vote_count": 7769
     },
     {
       "adult": false,
-      "backdrop_path": "/wcka0WH6otb1xueWk62Rpxqh3nm.jpg",
+      "backdrop_path": "/lMZ4KpFi6nhm4VjPvAxUt18HeOx.jpg",
       "genre_ids": [
-        35,
-        18
+        35
       ],
-      "id": 937220,
+      "id": 814776,
       "original_language": "en",
-      "original_title": "Bank of Dave",
-      "overview": "The true story of how Dave Fishwick, a working class man and self-made millionaire, fought to set up a community bank so that he could help the local businesses of Burnley not only survive, but thrive. In his bid to help his beloved community, he has to take on the elitist financial institutions of London and fight to receive the first, new banking license to be issued in over 100 years.",
-      "popularity": 58.451,
-      "poster_path": "/6qRsmh6500c6piPbIcwc2VZ3E1n.jpg",
+      "original_title": "Bottoms",
+      "overview": "",
+      "popularity": 42.686,
+      "poster_path": "/rm7EDynHn7PBFOHQVLdXImyhDU3.jpg",
       "release_date": "2023-08-25",
-      "title": "Bank of Dave",
+      "title": "바텀스",
       "video": false,
-      "vote_average": 6.9,
-      "vote_count": 14
+      "vote_average": 7.8,
+      "vote_count": 16
     },
     {
       "adult": false,
@@ -133,9 +210,9 @@
       "id": 889450,
       "original_language": "en",
       "original_title": "Outlaw Johnny Black",
-      "overview": "Hell bent on avenging the death of his father, Johnny Black vows to gun down Brett Clayton and becomes a wanted man in the process while posing as a preacher in a small mining town that's been taken over by a notorious Land Baron.",
-      "popularity": 42.677,
-      "poster_path": "/p7I17l9jRI146JvNb4oo3STOTmV.jpg",
+      "overview": "",
+      "popularity": 33.369,
+      "poster_path": "/o4iHZFDKzyqoojcb82UicN0CJxs.jpg",
       "release_date": "2023-09-15",
       "title": "Outlaw Johnny Black",
       "video": false,
@@ -152,14 +229,14 @@
       "id": 1001811,
       "original_language": "en",
       "original_title": "My Big Fat Greek Wedding 3",
-      "overview": "The Portokalos family travels to Greece for a family reunion.",
-      "popularity": 40.174,
-      "poster_path": "/irEqWPmDqCuzsItzefFxX3xWpL8.jpg",
+      "overview": "툴라와 이안 부부는 자신의 고향에서 뿌리를 찾아 달라는 아버지의 유언을 들어 드리기 위해 난생 처음 가족들과 함께 고향인 그리스의 작은 마을로 여행을 떠난다. 무언가를 숨기는 듯한 딸 패리스부터 그녀의 전 썸남 아리스토텔레스, 그리스 미신쟁이에 잔소리 대장인 불라와 프리다 이모, 세상 천진난만한 동생 닉까지 뭉칠수록 더 별난 이들은 도착한 그리스 마을에서 예상치 못한 비밀과 사건을 마주하며 우여곡절을 겪기 시작하는데…",
+      "popularity": 37.831,
+      "poster_path": "/8p7y5v92YYCeemkRbdF07rL1Oq2.jpg",
       "release_date": "2023-09-08",
-      "title": "My Big Fat Greek Wedding 3",
+      "title": "나의 그리스식 웨딩 3",
       "video": false,
-      "vote_average": 6,
-      "vote_count": 10
+      "vote_average": 5.8,
+      "vote_count": 11
     },
     {
       "adult": false,
@@ -170,169 +247,33 @@
       "id": 927594,
       "original_language": "ja",
       "original_title": "ラブライフ",
-      "overview": "Taeko and her husband, Jiro, are living a peaceful existence with her young son Keita, when a tragic accident brings the boy's long-lost father, Park, back into her life. To cope with the pain and guilt, Taeko throws herself into helping this deaf and homeless man.",
-      "popularity": 38.272,
-      "poster_path": "/5OSTURpAJCFsUydL6w4JPx48SSQ.jpg",
+      "overview": "타에코는 어린 아들을 아끼며 행복한 결혼 생활을 꿈꾸지만 갑작스러운 사고가 벌어진다. 비극이 벌어진 뒤 타에코 앞에 사라졌던 전남편이 돌아온다. 청각장애를 지닌 한국인 전남편은 타에코가 돌봐주지 않으면 안 되는 처량한 몰골로 나타나 그녀 주변에 머무른다. 타에코는 이 보잘것없는 남자를 외면하지 못하고 남들이 이해 못할 선택을 한다. 사랑과 가족에 대한 우리의 선입견은 타에코의 선택 앞에 무너진다.",
+      "popularity": 33.232,
+      "poster_path": "/fysY87A3FByu0TEECLMgdk7uhBx.jpg",
       "release_date": "2023-08-11",
-      "title": "Love Life",
+      "title": "러브 라이프",
       "video": false,
       "vote_average": 7.1,
       "vote_count": 48
     },
     {
       "adult": false,
-      "backdrop_path": "/bYpmDDNatiGvqa4iShuw5xTpMYt.jpg",
+      "backdrop_path": "/cOF7XiobQU4TC2tKDPXJ8d2nULP.jpg",
       "genre_ids": [
-        878,
-        35,
-        18
+        28,
+        53
       ],
-      "id": 1072371,
+      "id": 1024127,
       "original_language": "en",
-      "original_title": "Jules",
-      "overview": "A flying saucer lands in the backyard of an elderly suburbanite with memory problems, who forms a bond with the scared alien inside.",
-      "popularity": 55.923,
-      "poster_path": "/yMOWu8rpZPiBI0j8MInBTtNO0vU.jpg",
-      "release_date": "2023-08-11",
-      "title": "Jules",
+      "original_title": "King of Killers",
+      "overview": "전 세계 No.1 킬러들의 생존 게임 세계 최고의 킬러들 앞으로 초대장이 도착한다 한 곳에 모인 킬러들은 킬러들의 왕을 암살하고 최고의 킬러를 가리는 시합에 초청된 것 생존 게임이 시작되면, 단 한 놈만 살아남는다! 역대급 킬러 서바이벌을 만난다! 최후의 승자를 확인하라!",
+      "popularity": 31.715,
+      "poster_path": "/x5AreOAgkTBzUSL58o4jsYortw2.jpg",
+      "release_date": "2023-09-01",
+      "title": "킹 오브 킬러스",
       "video": false,
-      "vote_average": 7.9,
-      "vote_count": 40
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/dMkhsgmsH5XK3SmVdsvA4I9B9C.jpg",
-      "genre_ids": [
-        10751,
-        35
-      ],
-      "id": 917594,
-      "original_language": "en",
-      "original_title": "Camp Hideout",
-      "overview": "Noah is a troubled teen who nearly gets caught stealing a top-secret gadget from some big city thugs. After barely escaping, he decides to hide out at a summer camp that's run by the eccentric Falco and counselors Jake and Selena. As Noah tries to blend in with the rest of the rowdy campers, his crooked partners show up to steal the classified item, now in his possession.",
-      "popularity": 28.653,
-      "poster_path": "/iRqstvN60G1JytNcqerdvOvEA21.jpg",
-      "release_date": "2023-09-15",
-      "title": "Camp Hideout",
-      "video": false,
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/oBNW28Zn0clre1GA550q2aRarKx.jpg",
-      "genre_ids": [
-        16,
-        18,
-        10751,
-        36
-      ],
-      "id": 676727,
-      "original_language": "en",
-      "original_title": "The Inventor",
-      "overview": "The insatiably curious and headstrong inventor Leonardo da Vinci leaves Italy to join the French court, where he can experiment freely, inventing flying contraptions, incredible machines, and study the human body. There, joined in his adventure by the audacious princess Marguerite, Leonardo will uncover the answer to the ultimate question – \"What is the meaning of it all?\"",
-      "popularity": 25.955,
-      "poster_path": "/489kEvaylSuutUJ0GVVs6gUmirB.jpg",
-      "release_date": "2023-09-15",
-      "title": "The Inventor",
-      "video": false,
-      "vote_average": 6,
-      "vote_count": 1
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/Ae0pgd0vxDNNVSl2iOZ7rYdDZTi.jpg",
-      "genre_ids": [
-        12,
-        35
-      ],
-      "id": 923939,
-      "original_language": "en",
-      "original_title": "The Wonderful Story of Henry Sugar",
-      "overview": "A rich man learns about a guru who can see without using his eyes. He sets out to master the skill in order to cheat at gambling.",
-      "popularity": 37.106,
-      "poster_path": "/9XVtGa4iVjRCkE158PuCstuWaLM.jpg",
-      "release_date": "2023-09-20",
-      "title": "The Wonderful Story of Henry Sugar",
-      "video": false,
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/lMZ4KpFi6nhm4VjPvAxUt18HeOx.jpg",
-      "genre_ids": [
-        35
-      ],
-      "id": 814776,
-      "original_language": "en",
-      "original_title": "Bottoms",
-      "overview": "Unpopular best friends PJ and Josie start a high school self-defense club to meet girls and lose their virginity. They soon find themselves in over their heads when the most popular students start beating each other up in the name of self-defense.",
-      "popularity": 42.941,
-      "poster_path": "/rm7EDynHn7PBFOHQVLdXImyhDU3.jpg",
-      "release_date": "2023-08-25",
-      "title": "Bottoms",
-      "video": false,
-      "vote_average": 7.8,
-      "vote_count": 16
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/eXDkeWY3EGBhAPL5y8Jk7aonwu4.jpg",
-      "genre_ids": [
-        878,
-        35,
-        18
-      ],
-      "id": 889675,
-      "original_language": "en",
-      "original_title": "The Pod Generation",
-      "overview": "Set in a near future where AI is all the rage and nature is becoming a distant memory, Rachel and Alvy are a New York couple ready to take their relationship to the next level and start a family.",
-      "popularity": 35.716,
-      "poster_path": "/wGk1IFwSlL8hHEmRAFjXMjxujUU.jpg",
-      "release_date": "2023-08-11",
-      "title": "The Pod Generation",
-      "video": false,
-      "vote_average": 4.9,
-      "vote_count": 6
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/lay1O68tG9WdLnHxOLCHe2WcWwn.jpg",
-      "genre_ids": [
-        18,
-        878
-      ],
-      "id": 528502,
-      "original_language": "en",
-      "original_title": "Aporia",
-      "overview": "Since losing her husband, Sophie has struggled to manage grief, a full-time job, and parenting her devastated daughter, but when a former physicist reveals a secret time-bending machine, Sophie will be faced with an impossible choice.",
-      "popularity": 28.846,
-      "poster_path": "/zYt35YGKoc85LXULzMKDfJ8qX1C.jpg",
-      "release_date": "2023-08-11",
-      "title": "Aporia",
-      "video": false,
-      "vote_average": 4.4,
-      "vote_count": 5
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/iLxliFy7HrIbKGHTdwVfgKeQLwG.jpg",
-      "genre_ids": [
-        10402,
-        99
-      ],
-      "id": 24128,
-      "original_language": "en",
-      "original_title": "Stop Making Sense",
-      "overview": "A concert film documenting Talking Heads at the height of their popularity, on tour for their 1983 album \"Speaking in Tongues.\" The band takes the stage one by one and is joined by a cadre of guest musicians for a career-spanning and cinematic performance that features creative choreography and visuals.",
-      "popularity": 21.442,
-      "poster_path": "/uFMsMsk1NGo0QWs9IHknZVHSe4O.jpg",
-      "release_date": "1984-11-16",
-      "title": "Stop Making Sense",
-      "video": false,
-      "vote_average": 8.2,
-      "vote_count": 205
+      "vote_average": 5,
+      "vote_count": 15
     },
     {
       "adult": false,
@@ -345,14 +286,14 @@
       "id": 937020,
       "original_language": "ta",
       "original_title": "ஜெயிலர்",
-      "overview": "Muthuvel Pandian lives a peaceful life with his family, but a sudden intrusion of unwelcome parties in the lives of his family forces him to turn to a path he had long left behind.",
-      "popularity": 36.712,
+      "overview": "무투벨 판디안은 가족과 함께 평화로운 삶을 살지만, 갑작스러운 불청객의 침입으로 인해 오랫동안 떠나있던 길로 돌아서야만 합니다.",
+      "popularity": 46.448,
       "poster_path": "/pTmMxAHqX4vsIDE6HPPxOR0Q6TN.jpg",
       "release_date": "2023-08-10",
-      "title": "Jailer",
+      "title": "제일러",
       "video": false,
-      "vote_average": 7.3,
-      "vote_count": 30
+      "vote_average": 7.2,
+      "vote_count": 33
     },
     {
       "adult": false,
@@ -363,8 +304,8 @@
       "id": 1168918,
       "original_language": "en",
       "original_title": "The Making of Indiana Jones and the Dial of Destiny",
-      "overview": "Join the adventure with the cast and crew, showcasing new characters, stunts, music, locations, production design, and visual effects in five chapters that chart the making of Indiana Jones and the Dial of Destiny.",
-      "popularity": 36.396,
+      "overview": "",
+      "popularity": 34.866,
       "poster_path": "/nJeiS9Zi1GTKD7JXFHyVJ1Edd0H.jpg",
       "release_date": "2023-08-29",
       "title": "The Making of Indiana Jones and the Dial of Destiny",
@@ -374,23 +315,84 @@
     },
     {
       "adult": false,
-      "backdrop_path": "/udbMASX0UDTELMmH9bsdL1ciRli.jpg",
+      "backdrop_path": "/hb0BeFvZNx2zLGWwuwENOIVeK1U.jpg",
       "genre_ids": [
-        99
+        35,
+        18,
+        36
       ],
-      "id": 1058664,
+      "id": 792293,
       "original_language": "en",
-      "original_title": "Invisible Beauty",
-      "overview": "Fashion revolutionary Bethann Hardison looks back on her journey as a pioneering Black model, modeling agent, and activist, shining a light on an untold chapter in the fight for racial diversity.",
-      "popularity": 20.867,
-      "poster_path": "/3P81UxxWPUooVe2sP8zbw7MYSI7.jpg",
+      "original_title": "Dumb Money",
+      "overview": "",
+      "popularity": 31.839,
+      "poster_path": "/xYTymnjkVqhn3V66QmNJxFUesLT.jpg",
       "release_date": "2023-09-15",
-      "title": "Invisible Beauty",
+      "title": "Dumb Money",
       "video": false,
-      "vote_average": 0,
-      "vote_count": 0
+      "vote_average": 10,
+      "vote_count": 2
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/eXDkeWY3EGBhAPL5y8Jk7aonwu4.jpg",
+      "genre_ids": [
+        878,
+        35,
+        18
+      ],
+      "id": 889675,
+      "original_language": "en",
+      "original_title": "The Pod Generation",
+      "overview": "그리 머지않은 미래의 뉴욕, 레이첼과 앨비 커플은 기술의 발달에 따라 더욱더 편리한 삶을 살고 있다. 떠오르는 기술 회사의 중역인 레이첼은 자궁 센터의 탐나는 자리를 차지한다. 이곳은 분리 가능한 인공 자궁, 팟을 통해 커플들에게 편리하게(또한 부담을 나누며) 아이를 가질 기회를 제공한다. 그런데 자연에 깊은 애정을 지닌 식물학자인 앨비는 자연 임신을 원한다. 하지만 왜 그게 ‘자연스러운’ 것인가? 레이첼의 AI 테라피스트도 말한다. 이렇게 해서 부모가 되는 목표를 향한 기술로 포장된 길이 시작된다.",
+      "popularity": 34.361,
+      "poster_path": "/wGk1IFwSlL8hHEmRAFjXMjxujUU.jpg",
+      "release_date": "2023-08-11",
+      "title": "팟 제너레이션",
+      "video": false,
+      "vote_average": 5.2,
+      "vote_count": 8
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/cAUfKOD49fzODK4EXalEA1ANg0P.jpg",
+      "genre_ids": [
+        14,
+        27,
+        10749
+      ],
+      "id": 1058689,
+      "original_language": "en",
+      "original_title": "My Animal",
+      "overview": "",
+      "popularity": 49.221,
+      "poster_path": "/jKdxd0Kj4ceaWN63rBMBS3cfSI4.jpg",
+      "release_date": "2023-09-08",
+      "title": "마이 애니멀",
+      "video": false,
+      "vote_average": 4.9,
+      "vote_count": 7
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oGY415S8J0NxVbXKHaEOwns1ZWf.jpg",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "id": 507250,
+      "original_language": "en",
+      "original_title": "Dead Shot",
+      "overview": "",
+      "popularity": 36.361,
+      "poster_path": "/oLMzL9cpBBnkMGF8j4Z5Dbi2Z5u.jpg",
+      "release_date": "2023-08-18",
+      "title": "데드 샷",
+      "video": false,
+      "vote_average": 5.5,
+      "vote_count": 2
     }
   ],
-  "total_pages": 13,
-  "total_results": 253
+  "total_pages": 15,
+  "total_results": 289
 }
