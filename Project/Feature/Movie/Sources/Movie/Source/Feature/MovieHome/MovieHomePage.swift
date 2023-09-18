@@ -26,35 +26,22 @@ extension MovieHomePage {
   }
   
   private var searchResultMoviesComponentViewState: SearchResultMoviesComponent.ViewState {
-    .init(itemList: [], keywordList: [])
+    .init(
+      fetchSearchMovie: viewStore.fetchSearchMovie.value,
+      fetchSearchKeyword: viewStore.fetchSearchKeyword.value)
   }
   
   private var searchResultPeopleComponenetViewState: SearchResultPeopleComponenet.ViewState {
-    //    .init(text: "SearchResultPeopleComponenet")
-    .init(
-      profileList: [
-        SearchResultPeopleComponenet.ViewState.ProfileItem(
-          name: "Florence Pugh",
-          workList: ["Midsommar", "Black Wido", "Little Women"]),
-        SearchResultPeopleComponenet.ViewState.ProfileItem(
-          name: "Morgan Freeman",
-          workList: ["Se7en", "The Shawshank Redemption", "Lucy"]),
-        SearchResultPeopleComponenet.ViewState.ProfileItem(
-          name: "Rebecca Ferguson",
-          workList: ["Dune", "The Girl on the Train", "Life"]),
-        SearchResultPeopleComponenet.ViewState.ProfileItem(
-          name: "Travis Fimmel",
-          workList: ["Warcraft", "Danger Close: The Battle of Long Tan"]),
-        SearchResultPeopleComponenet.ViewState.ProfileItem(
-          name: "Dakota Fanning",
-          workList: ["Coraline", "War of the Worlds", "Man on Fire"]),
-      ])
+    .init(rawValue: viewStore.fetchSearchPeople.value)
+    
   }
 }
 
 extension MovieHomePage {
   private var isLoading: Bool {
     viewStore.fetchNowPlaying.isLoading
+    || viewStore.fetchSearchMovie.isLoading
+    || viewStore.fetchSearchKeyword.isLoading
   }
 }
 
@@ -109,7 +96,7 @@ extension MovieHomePage: View {
               Spacer()
             }
             .background(.white)
-          }
+          } 
         }
       
       Spacer()

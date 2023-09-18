@@ -22,6 +22,13 @@ extension SearchUseCasePlatformMock {
       .mapToData()
       .decoded()
   }
+  
+  private var searchPeoplePage1: SearchDomain.Response.PeopleResult {
+    Files.searchPerson1Json.url
+      .mapToData()
+      .decoded()
+  }
+  
 }
 
 extension SearchUseCasePlatformMock: SearchUseCase {
@@ -42,6 +49,17 @@ extension SearchUseCasePlatformMock: SearchUseCase {
         .eraseToAnyPublisher()
     }
   }
+  
+  public var searchPeople: (SearchDomain.Request.KeywordAndPage) -> AnyPublisher<SearchDomain.Response.PeopleResult, CompositeErrorDomain>  {
+    { _ in
+      Just(searchPeoplePage1)
+        .delay(for: .seconds(1), scheduler: RunLoop.main)
+        .setFailureType(to: CompositeErrorDomain.self)
+        .eraseToAnyPublisher()
+      
+    }
+  }
+  
 }
 
 extension URL {
