@@ -10,6 +10,9 @@ extension Link.Movie {
     case home = "movieHome"
     case myLists = "myLists"
     case movieDetail = "movieDetail"
+    case review = "review"
+    case cast = "cast"
+    case crew = "crew"
   }
 }
 
