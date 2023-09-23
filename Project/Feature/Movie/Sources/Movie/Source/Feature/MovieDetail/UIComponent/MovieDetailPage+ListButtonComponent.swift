@@ -61,7 +61,6 @@ extension MovieDetailPage.ListButtonComponent: View {
       
       Spacer()
     }
-    .padding(.vertical, 12)
     .padding(.leading, 16)
   }
 }

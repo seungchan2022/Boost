@@ -26,7 +26,10 @@ extension AppContainer {
       movieUseCase: MovieUseCasePlatformMock(
         configurationDomain: configuration),
       searchUseCase: SearchUseCasePlatformMock(
-        configurationDomain: configuration))
+        configurationDomain: configuration),
+    movieDetailUseCase: MovieDetailUseCasePlatformMock(
+      configurationDomain: configuration)
+    )
     return .init(
       dependency: dependency,
       navigator: .init(

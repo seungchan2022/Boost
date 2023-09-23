@@ -27,6 +27,11 @@ let package = Package(
       .process("Resource/Mock/search_movie_1.json"),
       .process("Resource/Mock/search_person_1.json"),
       .process("Resource/Mock/search_keyword_1.json"),
+      .process("Resource/Mock/movieDetail_card_1.json"),
+      .process("Resource/Mock/movieDetail_review_1.json"),
+      .process("Resource/Mock/movieDetail_credit_1.json"),
+      .process("Resource/Mock/movieDetail_similar_1.json"),
+      .process("Resource/Mock/movieDetail_recommended_1.json"),
     ]
     ),
     .testTarget(
