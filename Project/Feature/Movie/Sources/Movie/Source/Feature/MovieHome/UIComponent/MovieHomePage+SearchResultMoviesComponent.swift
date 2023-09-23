@@ -8,6 +8,20 @@ extension MovieHomePage {
   }
 }
 
+extension MovieHomePage.SearchResultMoviesComponent {
+  private func formatDate(_ dateString: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    if let date = dateFormatter.date(from: dateString) {
+      dateFormatter.dateFormat = "M/d/yy"
+      return dateFormatter.string(from: date)
+    } else {
+      return "날짜 형식 오류"
+    }
+  }
+}
+
 extension MovieHomePage.SearchResultMoviesComponent: View {
   
   @ViewBuilder
@@ -19,29 +33,28 @@ extension MovieHomePage.SearchResultMoviesComponent: View {
             .font(.subheadline)
             .fontWeight(.semibold)
             .foregroundColor(Color.gray)
+            .padding(.top, 16)
         }) {
           
           if !viewState.keywordList.isEmpty {
             ForEach(viewState.keywordList, id: \.id) { item in
-              Divider()
-              HStack {
-                Text(item.name)
-                  .font(.subheadline)
-                
-                Spacer()
-                
-                Image(systemName: "chevron.forward")
-                  .resizable()
-                  .frame(width: 8, height: 8)
-                  .foregroundColor(Color(.gray))
-                  .padding(.trailing, 16)
+                Divider()
+                HStack {
+                  Text(item.name)
+                    .font(.subheadline)
+                  
+                  Spacer()
+                  
+                  Image(systemName: "chevron.forward")
+                    .resizable()
+                    .frame(width: 8, height: 8)
+                    .foregroundColor(Color(.gray))
+                    .padding(.trailing, 16)
+                }
               }
             }
-          }
         }
-        .padding(.vertical, 16)
   }
-  
   
   @ViewBuilder
   var resultSection: some View {
@@ -52,6 +65,7 @@ extension MovieHomePage.SearchResultMoviesComponent: View {
             .font(.subheadline)
             .fontWeight(.semibold)
             .foregroundColor(Color.gray)
+            .padding(.top, 16)
           
           Divider() }) {
             
@@ -81,7 +95,7 @@ extension MovieHomePage.SearchResultMoviesComponent: View {
                     
                     HStack {
                       Circle()
-                        .trim(from: 0, to: 0.75)
+                        .trim(from: 0, to: (item.voteAverage / 10))
                         .stroke(
                           
                           style: StrokeStyle(lineWidth: 2, dash: [1, 1.5]))
@@ -90,11 +104,11 @@ extension MovieHomePage.SearchResultMoviesComponent: View {
                         .foregroundColor(Color.lineColor(item.voteAverage))
                         .shadow(color: Color.lineColor(item.voteAverage), radius: 5, x: 0, y: 0)
                         .overlay (
-                          Text("\(Int(item.voteAverage * 100))%")
+                          Text("\(Int(item.voteAverage * 10))%")
                             .font(.system(size: 10))
                         )
                       
-                      Text(item.releaseDate)
+                      Text(formatDate(item.releaseDate))
                         .font(.subheadline)
                     }
                     
@@ -122,8 +136,7 @@ extension MovieHomePage.SearchResultMoviesComponent: View {
   }
   
   var body: some View {
-    
-    // 검색 했을때 맞는 키워드가 없으면 keywords에는 header만 나오고, Result 부분은 "No results" 가 나오도록 해야됌 => 현재는 list가 비어있을때로 설정함 (레이아웃 먼저 잡기 위해)
+
     ScrollView {
       LazyVStack(alignment: .leading) {
         keywordSection

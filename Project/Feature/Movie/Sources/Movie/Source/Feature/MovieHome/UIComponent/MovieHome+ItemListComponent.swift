@@ -9,6 +9,20 @@ extension MovieHomePage {
   }
 }
 
+extension MovieHomePage.ItemListComponent {
+  private func formatDate(_ dateString: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    if let date = dateFormatter.date(from: dateString) {
+      dateFormatter.dateFormat = "M/d/yy"
+      return dateFormatter.string(from: date)
+    } else {
+      return "날짜 형식 오류"
+    }
+  }
+}
+
 extension MovieHomePage.ItemListComponent: View {
   var body: some View {
     ScrollView {
@@ -34,7 +48,7 @@ extension MovieHomePage.ItemListComponent: View {
               
               HStack {
                 Circle()
-                  .trim(from: 0, to: 0.75)
+                  .trim(from: 0, to: item.voteAverage / 10)
                   .stroke(
                     style: StrokeStyle(lineWidth: 2, dash: [1, 1.5]))
                   .rotationEffect(.degrees(-90))
@@ -42,11 +56,11 @@ extension MovieHomePage.ItemListComponent: View {
                   .foregroundColor(Color.lineColor(item.voteAverage))
                   .shadow(color:Color.lineColor(item.voteAverage), radius: 5, x: 0, y: 0)
                   .overlay (
-                    Text("\(Int(item.voteAverage * 100))%")
+                    Text("\(Int(item.voteAverage * 10))%")
                       .font(.system(size: 10))
                   )
                 
-                Text(item.releaseDate)
+                Text(formatDate(item.releaseDate))
                   .font(.subheadline)
               }
               
@@ -124,12 +138,13 @@ extension Color {
   public static var customBgColor = Color(red: 0.94, green: 0.94, blue: 0.96)
   
   static func lineColor(_ voteAverage: Double) -> Color {
-    if voteAverage >= 0.75 {
+    if voteAverage >= 7.5 {
       return .green
-    } else if voteAverage >= 0.50 {
+    } else if voteAverage >= 5.0 {
       return .yellow
     } else {
       return .red
     }
   }
 }
+
