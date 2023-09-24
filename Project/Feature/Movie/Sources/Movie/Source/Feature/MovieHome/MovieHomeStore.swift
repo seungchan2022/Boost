@@ -55,6 +55,7 @@ extension MovieHomeStore {
 
     case onUpdateKeyword
     case onClearKeyword
+    case onSelectMovieItem(MovieDomain.MovieList.Response.ResultItem)
 
     case fetchNowPlay(Result<MovieDomain.MovieList.Response.NowPlay, CompositeErrorDomain>)
     case fetchSearchKeyword(Result<SearchDomain.Response.KeywordResult, CompositeErrorDomain>)
@@ -100,7 +101,7 @@ extension MovieHomeStore: Reducer {
 
       case .onUpdateKeyword:
         guard !state.keyword.isEmpty else { return .run { await $0(.onClearKeyword) } }
-        return .concatenate(
+        return .merge(
           env.searchKeyword(state.keyword)
             .map(Action.fetchSearchKeyword)
             .cancellable(pageID: pageID, id: CancelID.requestSearchKeyword, cancelInFlight: true),
@@ -121,6 +122,10 @@ extension MovieHomeStore: Reducer {
           .cancel(pageID: pageID, id: CancelID.requestSearchMovie),
           .cancel(pageID: pageID, id: CancelID.requestSearchPeople))
 
+      case .onSelectMovieItem(let item):
+        env.routeToMovieDetail(item)
+        return .none
+        
       case .fetchNowPlay(let result):
         state.fetchNowPlaying.isLoading = false
         switch result {
