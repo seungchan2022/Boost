@@ -18,6 +18,7 @@ let package = Package(
     .target(
       name: "Platform",
       dependencies: [
+        "Domain",
         "CombineNetwork",
       ],
       resources: [
