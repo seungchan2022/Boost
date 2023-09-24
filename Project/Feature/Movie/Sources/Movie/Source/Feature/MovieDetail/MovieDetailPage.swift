@@ -178,6 +178,7 @@ extension MovieDetailPage: View {
       .padding(.horizontal, 16)
     } // scrollview
     .background(Color.customBgColor)
+    .navigationTitle(viewStore.fetchMovieCard.value?.title ?? "")
 
     .animation(.spring(), value: viewStore.state)
     .setRequestFlightView(isLoading: isLoading)
@@ -193,7 +194,7 @@ extension MovieDetailPage: View {
 #Preview {
   MovieDetailPage(
     store: .init(
-      initialState: MovieDetailStore.State(),
+      initialState: MovieDetailStore.State(movieID: .zero),
       reducer: {
         MovieDetailStore(
           env: MovieDetailEnvMock(

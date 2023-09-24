@@ -17,6 +17,8 @@ extension URLSession {
     {
       self.dataTaskPublisher(for: $0)
         .tryMap { data, response in
+          print(response.url?.absoluteString ?? "")
+
           guard let urlResponse = response as? HTTPURLResponse
           else { throw CompositeErrorDomain.invalidCasting }
 
@@ -32,7 +34,7 @@ extension URLSession {
 }
 
 extension Endpoint {
-  fileprivate var makeRequest: () -> AnyPublisher<URLRequest, CompositeErrorDomain> {
+  private var makeRequest: () -> AnyPublisher<URLRequest, CompositeErrorDomain> {
     {
       Future<URLRequest, CompositeErrorDomain> { promise in
         guard let request else { return promise(.failure(.invalidCasting)) }

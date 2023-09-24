@@ -19,7 +19,10 @@ public struct MovieDetailStore {
 extension MovieDetailStore {
   public struct State: Equatable {
 
-    init() {
+    let movieID: Int
+
+    init(movieID: Int) {
+      self.movieID = movieID
       _fetchMovieCard = .init(.init(isLoading: false, value: .init()))
       _fetchMovieReview = .init(.init(isLoading: false, value: .init()))
       _fetchMovieCredit = .init(.init(isLoading: false, value: .init()))
@@ -89,8 +92,8 @@ extension MovieDetailStore: Reducer {
         state.fetchMovieCredit.isLoading = false
         state.fetchSimilarMovie.isLoading = false
         state.fetchRecommendedMovie.isLoading = false
-        return .concatenate(
-          env.movieCard()
+        return .merge(
+          env.movieCard(state.movieID)
             .map(Action.fetchMovieCard)
             .cancellable(pageID: pageID, id: CancelID.requestMovieCard, cancelInFlight: true),
           env.movieReview()
