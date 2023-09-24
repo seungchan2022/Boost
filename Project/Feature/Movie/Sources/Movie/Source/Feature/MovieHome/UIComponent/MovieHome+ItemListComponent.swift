@@ -100,11 +100,15 @@ extension Color {
   }
 }
 
+// MARK: - MovieHomePage.ItemListComponent.ItemComponent
+
 extension MovieHomePage.ItemListComponent {
   fileprivate struct ItemComponent {
     let item: ViewState.MovieItem
   }
 }
+
+// MARK: - MovieHomePage.ItemListComponent.ItemComponent + View
 
 extension MovieHomePage.ItemListComponent.ItemComponent: View {
   var body: some View {
@@ -169,7 +173,7 @@ extension String {
   fileprivate func formatDate() -> Self {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
-    
+
     if let date = dateFormatter.date(from: self) {
       dateFormatter.dateFormat = "M/d/yy"
       return dateFormatter.string(from: date)

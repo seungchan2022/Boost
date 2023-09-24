@@ -1,11 +1,11 @@
 import Foundation
 
-// MARK: - CrewMocck
+// MARK: - CrewEnvMocck
 
-struct CrewMocck {
+struct CrewEnvMocck {
   let useCaseGroup: MovieSideEffectGroup
 }
 
 // MARK: CrewEnvType
 
-extension CrewMocck: CrewEnvType { }
+extension CrewEnvMocck: CrewEnvType { }

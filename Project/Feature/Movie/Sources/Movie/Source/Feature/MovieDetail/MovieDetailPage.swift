@@ -189,3 +189,15 @@ extension MovieDetailPage: View {
     }
   }
 }
+
+#Preview {
+  MovieDetailPage(
+    store: .init(
+      initialState: MovieDetailStore.State(),
+      reducer: {
+        MovieDetailStore(
+          env: MovieDetailEnvMock(
+            mainQueue: .main,
+            useCaseGroup: MovieSideEffectGroupMock()))
+      }))
+}

@@ -49,3 +49,11 @@ extension ReviewPage: View {
     .background(Color.customBgColor)
   }
 }
+
+#Preview {
+  ReviewPage(store: .init(
+    initialState: ReviewStore.State(),
+    reducer: {
+      ReviewStore(env: ReviewEnvMock(useCaseGroup: MovieSideEffectGroupMock()))
+    }))
+}

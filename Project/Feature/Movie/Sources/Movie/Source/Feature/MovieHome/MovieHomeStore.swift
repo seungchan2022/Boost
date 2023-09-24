@@ -125,7 +125,7 @@ extension MovieHomeStore: Reducer {
       case .onSelectMovieItem(let item):
         env.routeToMovieDetail(item)
         return .none
-        
+
       case .fetchNowPlay(let result):
         state.fetchNowPlaying.isLoading = false
         switch result {

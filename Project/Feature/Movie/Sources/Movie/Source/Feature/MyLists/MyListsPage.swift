@@ -102,3 +102,13 @@ extension MyListsPage: View {
     .background(Color.customBgColor)
   }
 }
+
+#Preview {
+  MyListsPage(store: .init(
+    initialState: MyListsStore.State(),
+    reducer: {
+      MyListsStore(
+        env: MyListsEnvMock(
+          useCaseGroup: MovieSideEffectGroupMock()))
+    }))
+}
