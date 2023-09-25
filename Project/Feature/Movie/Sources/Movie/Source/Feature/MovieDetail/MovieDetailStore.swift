@@ -18,7 +18,6 @@ public struct MovieDetailStore {
 
 extension MovieDetailStore {
   public struct State: Equatable {
-
     let movieID: Int
 
     init(movieID: Int) {
@@ -96,16 +95,16 @@ extension MovieDetailStore: Reducer {
           env.movieCard(state.movieID)
             .map(Action.fetchMovieCard)
             .cancellable(pageID: pageID, id: CancelID.requestMovieCard, cancelInFlight: true),
-          env.movieReview()
+          env.movieReview(state.movieID)
             .map(Action.fetchMovieReview)
             .cancellable(pageID: pageID, id: CancelID.requestMovieReview, cancelInFlight: true),
-          env.movieCredit()
+          env.movieCredit(state.movieID)
             .map(Action.fetchMovieCredit)
             .cancellable(pageID: pageID, id: CancelID.requestMovieCredit, cancelInFlight: true),
-          env.similarMovie()
+          env.similarMovie(state.movieID)
             .map(Action.fetchSimilarMovie)
             .cancellable(pageID: pageID, id: CancelID.requestSimilarMovie, cancelInFlight: true),
-          env.recommendedMovie()
+          env.recommendedMovie(state.movieID)
             .map(Action.fetchRecommendedMovie)
             .cancellable(pageID: pageID, id: CancelID.requestRecommendedMovie, cancelInFlight: true))
 

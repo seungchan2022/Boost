@@ -126,17 +126,21 @@ extension MovieDetailPage: View {
             CastListComponent(viewState: castListComponent)
           }
 
-          Divider()
-            .padding(.leading, 16)
+          if !directorComponent.director.isEmpty {
+            Divider()
+              .padding(.leading, 16)
 
-          // director
-          DirectorComponent(viewState: directorComponent)
+            // director
+            DirectorComponent(viewState: directorComponent)
+          }
 
-          Divider()
-            .padding(.leading, 16)
+          if !crewListComponent.profileList.isEmpty {
+            Divider()
+              .padding(.leading, 16)
 
-          // crew
-          CrewListComponent(viewState: crewListComponent)
+            // crew
+            CrewListComponent(viewState: crewListComponent)
+          }
         }
 
         Group {

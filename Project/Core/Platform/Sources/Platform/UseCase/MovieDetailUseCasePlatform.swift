@@ -42,9 +42,20 @@ extension MovieDetailUseCasePlatform: MovieDetailUseCase {
     MovieDetailDomain.Response.MovieReviewResult,
     CompositeErrorDomain
   > {
-    { _ in
-      Fail(error: CompositeErrorDomain.invalidCasting)
-        .eraseToAnyPublisher()
+    {
+      item in
+      let requestModel = Review(apiKey: configurationDomain.entity.baseURL.apiToken)
+      let endpoint = Endpoint(
+        baseURL: configurationDomain.entity.baseURL.apiURL,
+        pathList: ["movie", "\(item.id)", "reviews"],
+        content: .queryItemPath(requestModel))
+      return endpoint.fetch()
+
+//      Endpoint(
+//       baseURL: apiURL,
+//       pathList: ["movie", "\($0.id)", "reviews"],
+//       content: .queryItemPath(Review(apiKey: apiToken)))
+//      .fetch()
     }
   }
 
@@ -52,9 +63,20 @@ extension MovieDetailUseCasePlatform: MovieDetailUseCase {
     MovieDetailDomain.Response.MovieCreditResult,
     CompositeErrorDomain
   > {
-    { _ in
-      Fail(error: CompositeErrorDomain.invalidCasting)
-        .eraseToAnyPublisher()
+    {
+//      item in
+//      let reqeustModel = Credit(apiKey: configurationDomain.entity.baseURL.apiToken)
+//      let endpoint = Endpoint(
+//        baseURL: configurationDomain.entity.baseURL.apiURL,
+//        pathList: ["movie", "\(item.id)", "credits"],
+//        content: .queryItemPath(reqeustModel))
+//      return endpoint.fetch()
+
+      Endpoint(
+        baseURL: apiURL,
+        pathList: ["movie", "\($0.id)", "credits"],
+        content: .queryItemPath(Credit(apiKey: apiToken)))
+        .fetch()
     }
   }
 
@@ -62,19 +84,42 @@ extension MovieDetailUseCasePlatform: MovieDetailUseCase {
     MovieDetailDomain.Response.SimilarMovieResult,
     CompositeErrorDomain
   > {
-    { _ in
-      Fail(error: CompositeErrorDomain.invalidCasting)
-        .eraseToAnyPublisher()
+    {
+//      item in
+//      let requestModel = SimilarMovie(apiKey: configurationDomain.entity.baseURL.apiToken)
+//      let endpoint = Endpoint(
+//        baseURL: configurationDomain.entity.baseURL.apiURL,
+//        pathList: ["movie", "\(item.id)", "similar"],
+//        content: .queryItemPath(requestModel))
+//      return endpoint.fetch()
+
+      Endpoint(
+        baseURL: apiURL,
+        pathList: ["movie", "\($0.id)", "similar"],
+        content: .queryItemPath(SimilarMovie(apiKey: apiToken)))
+        .fetch()
     }
   }
 
+//  * https://api.themoviedb.org/3/movie/298618/recommendations?api_key=1d9b898a212ea52e283351e521e17871&language=ko-US
   public var recommendedMovie: (MovieDetailDomain.Request.RecommendedMovie) -> AnyPublisher<
     MovieDetailDomain.Response.RecommenededMovieResult,
     CompositeErrorDomain
   > {
-    { _ in
-      Fail(error: CompositeErrorDomain.invalidCasting)
-        .eraseToAnyPublisher()
+    {
+//      item in
+//      let requestModel = Review(apiKey: configurationDomain.entity.baseURL.apiToken)
+//      let endpoint = Endpoint(
+//        baseURL: configurationDomain.entity.baseURL.apiURL,
+//        pathList: ["movie", "\(item.id)", "recommendations"],
+//        content: .queryItemPath(requestModel))
+//      return endpoint.fetch()
+
+      Endpoint(
+        baseURL: configurationDomain.entity.baseURL.apiURL,
+        pathList: ["movie", "\($0.id)", "recommendations"],
+        content: .queryItemPath(Review(apiKey: apiToken)))
+        .fetch()
     }
   }
 }
@@ -111,6 +156,70 @@ extension MovieDetailUseCasePlatform {
       case language
       case appendToResponse = "append_to_response"
       case includeImageLanguage = "include_image_language"
+    }
+  }
+
+  private struct Review: Equatable, Codable {
+    let apiKey: String
+    let language: String
+
+    init(apiKey: String) {
+      let language = LocaleClient().language
+      self.apiKey = apiKey
+      self.language = language
+    }
+
+    private enum CodingKeys: String, CodingKey {
+      case apiKey = "api_key"
+      case language
+    }
+  }
+
+  private struct Credit: Equatable, Codable {
+    let apiKey: String
+    let language: String
+
+    init(apiKey: String) {
+      let language = LocaleClient().language
+      self.apiKey = apiKey
+      self.language = language
+    }
+
+    private enum CodingKeys: String, CodingKey {
+      case apiKey = "api_key"
+      case language
+    }
+  }
+
+  private struct SimilarMovie: Equatable, Codable {
+    let apiKey: String
+    let language: String
+
+    init(apiKey: String) {
+      let language = LocaleClient().language
+      self.apiKey = apiKey
+      self.language = language
+    }
+
+    private enum CodingKeys: String, CodingKey {
+      case apiKey = "api_key"
+      case language
+    }
+  }
+
+  private struct RecommendedMovie: Equatable, Codable {
+    let apiKey: String
+    let language: String
+
+    init(apiKey: String) {
+      let language = LocaleClient().language
+      self.apiKey = apiKey
+      self.language = language
+    }
+
+    private enum CodingKeys: String, CodingKey {
+      case apiKey = "api_key"
+      case language
     }
   }
 }
