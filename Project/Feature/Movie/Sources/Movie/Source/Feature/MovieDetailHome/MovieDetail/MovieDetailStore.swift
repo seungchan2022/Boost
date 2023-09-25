@@ -48,6 +48,8 @@ extension MovieDetailStore {
 
     case getMovieDetail
 
+    case onSelectReview(MovieDetailDomain.Response.MovieReviewResult)
+
     case fetchMovieCard(Result<MovieDetailDomain.Response.MovieCardResult, CompositeErrorDomain>)
     case fetchMovieReview(Result<MovieDetailDomain.Response.MovieReviewResult, CompositeErrorDomain>)
     case fetchMovieCredit(Result<MovieDetailDomain.Response.MovieCreditResult, CompositeErrorDomain>)
@@ -107,6 +109,10 @@ extension MovieDetailStore: Reducer {
           env.recommendedMovie(state.movieID)
             .map(Action.fetchRecommendedMovie)
             .cancellable(pageID: pageID, id: CancelID.requestRecommendedMovie, cancelInFlight: true))
+
+      case .onSelectReview(let item):
+        env.routeToReview(item)
+        return .none
 
       case .fetchMovieCard(let result):
         state.fetchMovieCard.isLoading = false

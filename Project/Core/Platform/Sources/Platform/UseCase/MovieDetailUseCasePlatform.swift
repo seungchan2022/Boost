@@ -101,7 +101,6 @@ extension MovieDetailUseCasePlatform: MovieDetailUseCase {
     }
   }
 
-//  * https://api.themoviedb.org/3/movie/298618/recommendations?api_key=1d9b898a212ea52e283351e521e17871&language=ko-US
   public var recommendedMovie: (MovieDetailDomain.Request.RecommendedMovie) -> AnyPublisher<
     MovieDetailDomain.Response.RecommenededMovieResult,
     CompositeErrorDomain

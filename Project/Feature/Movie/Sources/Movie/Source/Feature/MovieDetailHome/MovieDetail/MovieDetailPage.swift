@@ -74,6 +74,8 @@ extension MovieDetailPage {
     viewStore.fetchMovieCard.isLoading
       || viewStore.fetchMovieReview.isLoading
       || viewStore.fetchMovieCredit.isLoading
+      || viewStore.fetchSimilarMovie.isLoading
+      || viewStore.fetchRecommendedMovie.isLoading
   }
 }
 
@@ -88,12 +90,14 @@ extension MovieDetailPage: View {
         // 리스트 버튼들
         ListButtonComponent(viewState: listButtonComponent)
 
-        if movieReviewComponent.totalReviewList != 0 {
+        if movieReviewComponent.totalReviewList != .zero {
           Divider()
             .padding(.leading, 48)
 
           // 리뷰
-          MovieReviewComponent(viewState: movieReviewComponent)
+          MovieReviewComponent(
+            viewState: movieReviewComponent,
+            selectAction: { viewStore.send(.onSelectReview($0)) })
         }
 
         if !movieOverviewComponent.overView.isEmpty {

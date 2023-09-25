@@ -2,21 +2,31 @@ import Domain
 import Foundation
 import SwiftUI
 
-// MARK: - MovieDetailPage.CrewListComponent
+// MARK: - MovieDetailPage.CastListComponent
 
 extension MovieDetailPage {
-  struct CrewListComponent {
+  struct CastListComponent {
     let viewState: ViewState
   }
 }
 
-// MARK: - MovieDetailPage.CrewListComponent + View
+extension MovieDetailPage.CastListComponent {
+  private var itemList: [ViewState.ProfileItem] {
+    viewState.profileList.reduce(into: [ViewState.ProfileItem]()) { curr, next in
+      if !curr.contains(where: { $0.id == next.id }) {
+        curr.append(next)
+      }
+    }
+  }
+}
 
-extension MovieDetailPage.CrewListComponent: View {
+// MARK: - MovieDetailPage.CastListComponent + View
+
+extension MovieDetailPage.CastListComponent: View {
   var body: some View {
     VStack {
       HStack {
-        Text("Crew")
+        Text("Cast")
         Text("See all")
           .foregroundColor(.customGreenColor)
 
@@ -29,9 +39,10 @@ extension MovieDetailPage.CrewListComponent: View {
 
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
-          ForEach(viewState.profileList, id: \.id) { profile in
+          ForEach(itemList, id: \.id) { profile in
             Button(action: { }) {
               VStack(alignment: .center) {
+                // API로 받아오는 데이터가 nil이 아니라 ""(빈문자열)로 표시 될수 있으므로 != nil 대신 이런 방식으로 사용
                 if !profile.profileImage.isEmpty {
                   Asset.spongeBob.swiftUIImage
                     .resizable()
@@ -49,7 +60,7 @@ extension MovieDetailPage.CrewListComponent: View {
                 Text(profile.name)
                   .font(.footnote)
                   .foregroundColor(Color(.label))
-                Text(profile.department)
+                Text(profile.character)
                   .font(.caption)
                   .foregroundColor(.gray)
               }
@@ -60,38 +71,38 @@ extension MovieDetailPage.CrewListComponent: View {
         }
       }
     }
+
     .padding(.vertical)
     .padding(.horizontal, 16)
   }
 }
 
-// MARK: - MovieDetailPage.CrewListComponent.ViewState
+// MARK: - MovieDetailPage.CastListComponent.ViewState
 
-extension MovieDetailPage.CrewListComponent {
+extension MovieDetailPage.CastListComponent {
   struct ViewState: Equatable {
-    let profileList: [ProfileItem]
+    let profileList: [ProfileItem] //
 
     init(rawValue: MovieDetailDomain.Response.MovieCreditResult?) {
-      profileList = (rawValue?.crewList ?? []).map(ProfileItem.init(rawValue:))
+      profileList = (rawValue?.castList ?? []).map(ProfileItem.init(rawValue:))
     }
   }
 }
 
-// MARK: - MovieDetailPage.CrewListComponent.ViewState.ProfileItem
+// MARK: - MovieDetailPage.CastListComponent.ViewState.ProfileItem
 
-extension MovieDetailPage.CrewListComponent.ViewState {
-  struct ProfileItem: Equatable, Identifiable, Hashable {
+extension MovieDetailPage.CastListComponent.ViewState {
+  struct ProfileItem: Equatable, Identifiable {
     let id: Int
     let name: String
-    let department: String
+    let character: String
     let profileImage: String
 
-    init(rawValue: MovieDetailDomain.Response.CrewResultItem) {
+    init(rawValue: MovieDetailDomain.Response.CastResultItem) {
       id = rawValue.id
       name = rawValue.name
-      department = rawValue.department
+      character = rawValue.character
       profileImage = rawValue.profileImage ?? ""
     }
   }
-
 }

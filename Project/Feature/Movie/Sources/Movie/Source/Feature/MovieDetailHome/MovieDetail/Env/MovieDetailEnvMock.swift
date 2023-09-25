@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import Domain
 import Foundation
 
 // MARK: - MovieDetailEnvMock
@@ -11,4 +12,8 @@ struct MovieDetailEnvMock {
 
 // MARK: MovieDetailEnvType
 
-extension MovieDetailEnvMock: MovieDetailEnvType { }
+extension MovieDetailEnvMock: MovieDetailEnvType {
+  var routeToReview: (MovieDetailDomain.Response.MovieReviewResult) -> Void {
+    { _ in Void() }
+  }
+}

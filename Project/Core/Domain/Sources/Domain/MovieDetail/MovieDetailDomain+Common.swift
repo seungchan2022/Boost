@@ -15,7 +15,7 @@ extension MovieDetailDomain.Request {
   }
 
   public struct Review: Equatable, Codable {
-    public let id: Int
+    public let id: Int // movieid
 
     public init(id: Int) {
       self.id = id
@@ -255,7 +255,7 @@ extension MovieDetailDomain.Response {
   }
 
   public struct ReviewResultItem: Equatable, Codable, Identifiable {
-    public let id: String
+    public let id: String // author id
     public let author: String
     public let content: String
 
