@@ -90,7 +90,7 @@ extension MovieDetailPage: View {
         // 리스트 버튼들
         ListButtonComponent(viewState: listButtonComponent)
 
-        if movieReviewComponent.totalReviewList != .zero {
+        if movieReviewComponent.rawValue.totalResult != .zero {
           Divider()
             .padding(.leading, 48)
 

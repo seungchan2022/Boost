@@ -72,9 +72,10 @@ extension ReviewStore: Reducer {
 
       case .getMovieReview:
         state.fetchMovieReview.isLoading = false
-        return env.movieReview(state.movieID)
-          .map(Action.fetchMovieReview)
-          .cancellable(pageID: pageID, id: CancelID.requestMovieReview, cancelInFlight: true)
+        return .concatenate(
+          env.movieReview(state.movieID)
+            .map(Action.fetchMovieReview)
+            .cancellable(pageID: pageID, id: CancelID.requestMovieReview, cancelInFlight: true))
 
       case .fetchMovieReview(let result):
         state.fetchMovieReview.isLoading = false

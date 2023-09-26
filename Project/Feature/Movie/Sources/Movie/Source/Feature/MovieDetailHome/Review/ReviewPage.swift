@@ -22,6 +22,12 @@ extension ReviewPage {
   }
 }
 
+extension ReviewPage {
+  private var isLoading: Bool {
+    viewStore.fetchMovieReview.isLoading
+  }
+}
+
 // MARK: View
 
 extension ReviewPage: View {
@@ -36,7 +42,6 @@ extension ReviewPage: View {
       .padding(.bottom)
       .padding(.horizontal, 16)
     }
-
     .background(Color.customBgColor)
     .onAppear {
       viewStore.send(.getMovieReview)

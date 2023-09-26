@@ -17,18 +17,7 @@ extension ReviewPage.ItemListComponent: View {
     ScrollView {
       LazyVStack {
         ForEach(viewState.itemList) { item in
-          VStack(alignment: .leading, spacing: 8) {
-            Text("Review written by \(item.author)")
-              .font(.headline)
-
-            Text(item.content)
-              .font(.callout)
-
-            Divider()
-              .padding(.top, 16)
-              .padding(.leading, 16)
-          }
-          .onAppear { }
+          ItemComponent(item: item)
         }
         .padding(.horizontal)
         .padding(.vertical)
@@ -64,6 +53,32 @@ extension ReviewPage.ItemListComponent.ViewState {
       author = rawValue.author
       content = rawValue.content
       self.rawValue = rawValue
+    }
+  }
+}
+
+// MARK: - ReviewPage.ItemListComponent.ItemComponent
+
+extension ReviewPage.ItemListComponent {
+  fileprivate struct ItemComponent {
+    let item: ViewState.ReviewItem
+  }
+}
+
+// MARK: - ReviewPage.ItemListComponent.ItemComponent + View
+
+extension ReviewPage.ItemListComponent.ItemComponent: View {
+  var body: some View {
+    VStack(alignment: .leading, spacing: 8) {
+      Text("Review written by \(item.author)")
+        .font(.headline)
+
+      Text(item.content)
+        .font(.callout)
+
+      Divider()
+        .padding(.top, 16)
+        .padding(.leading, 16)
     }
   }
 }

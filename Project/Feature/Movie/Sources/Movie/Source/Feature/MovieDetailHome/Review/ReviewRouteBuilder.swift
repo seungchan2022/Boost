@@ -11,7 +11,7 @@ struct ReviewRoteBuilder<RootNavigator: LinkNavigatorURLEncodedItemProtocol & Li
     return .init(matchPath: matchPath) { navigator, item, dependency -> RouteViewController? in
       guard
         let env: MovieSideEffectGroup = dependency.resolve(),
-        let query: MovieDomain.MovieList.Response.ResultItem = item.decodedObject()
+        let query: MovieDetailDomain.Response.MovieReviewResult = item.decodedObject()
       else { return .none }
 
       return WrappingController(matchPath: matchPath) {

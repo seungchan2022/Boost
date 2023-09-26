@@ -289,7 +289,7 @@ extension MovieDetailDomain.Response {
   }
 
   public struct CastResultItem: Equatable, Codable, Identifiable {
-    public let id: Int
+    public let id: Int // cast id
     public let name: String
     public let character: String
     public let profileImage: String?

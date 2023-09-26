@@ -18,7 +18,7 @@ extension MovieDetailPage.MovieReviewComponent { }
 extension MovieDetailPage.MovieReviewComponent: View {
   var body: some View {
     HStack {
-      Text("\(viewState.totalReviewList) reviews")
+      Text("\(viewState.rawValue.totalResult) reviews")
         .foregroundColor(.customGreenColor)
 
       Spacer()
@@ -42,11 +42,9 @@ extension MovieDetailPage.MovieReviewComponent: View {
 
 extension MovieDetailPage.MovieReviewComponent {
   struct ViewState: Equatable {
-    let totalReviewList: Int
     let rawValue: MovieDetailDomain.Response.MovieReviewResult
 
     init(rawValue: MovieDetailDomain.Response.MovieReviewResult?) {
-      totalReviewList = rawValue?.totalResult ?? .zero
       self.rawValue = rawValue ?? MovieDetailDomain.Response.MovieReviewResult()
     }
   }
