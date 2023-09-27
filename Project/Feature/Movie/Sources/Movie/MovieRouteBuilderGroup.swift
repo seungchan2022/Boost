@@ -15,7 +15,8 @@ extension MovieRouteBuilderGroup {
       MovieDetailRouteBuilder.generate(),
       ReviewRoteBuilder.generate(),
       CastRouteBuilder.generate(),
-      CrewRouteBuilder().generate(),
+      CrewRouteBuilder.generate(),
+      SimilarMovieRouteBuilder.generate(),
     ]
   }
 }

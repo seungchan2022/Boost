@@ -353,13 +353,19 @@ extension MovieDetailDomain.Response {
 
   public struct SimilarMovieResultItem: Equatable, Codable, Identifiable {
     public let id: Int
+    public let posterPath: String
+    public let overview: String
     public let title: String
     public let voteAverage: Double
+    public let releaseDate: String
 
     private enum CodingKeys: String, CodingKey {
       case id
+      case posterPath = "poster_path"
+      case overview
       case title
       case voteAverage = "vote_average"
+      case releaseDate = "release_date"
     }
   }
 
