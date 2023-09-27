@@ -18,33 +18,13 @@ struct CrewPage {
 
 extension CrewPage {
   private var itemListComponentViewState: ItemListComponent.ViewState {
-    .init(
-      profileList: [
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Rodrigo Prieto",
-          department: "Camera"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Noa Baumbach",
-          department: "Production"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Carmel Jackson",
-          department: "Costume & Make-Up"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Toby Emmerich",
-          department: "Production"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "David Heyman",
-          department: "Production"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Andy Malcolm",
-          department: "Sound"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Lucy Bevan",
-          department: "Production"),
-        ItemListComponent.ViewState.ProfileItem(
-          name: "Roy Taylor",
-          department: "Crew"),
-      ])
+    .init(rawValue: viewStore.fetchMovieCrew.value.crewList)
+  }
+}
+
+extension CrewPage {
+  private var isLoading: Bool {
+    viewStore.fetchMovieCrew.isLoading
   }
 }
 
@@ -62,5 +42,11 @@ extension CrewPage: View {
       .padding(.horizontal, 16)
     }
     .background(Color.customBgColor)
+    .onAppear {
+      viewStore.send(.getMovieCrew)
+    }
+    .onDisappear {
+      viewStore.send(.teardown)
+    }
   }
 }

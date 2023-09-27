@@ -49,6 +49,9 @@ extension MovieDetailStore {
     case getMovieDetail
 
     case onSelectReview(MovieDetailDomain.Response.MovieReviewResult)
+    case onSelectCast(MovieDetailDomain.Response.MovieCreditResult)
+    case onSelectCrew(MovieDetailDomain.Response.MovieCreditResult)
+    case onSelectSimilarMovie(MovieDetailDomain.Response.SimilarMovieResult)
 
     case fetchMovieCard(Result<MovieDetailDomain.Response.MovieCardResult, CompositeErrorDomain>)
     case fetchMovieReview(Result<MovieDetailDomain.Response.MovieReviewResult, CompositeErrorDomain>)
@@ -112,6 +115,18 @@ extension MovieDetailStore: Reducer {
 
       case .onSelectReview(let item):
         env.routeToReview(item)
+        return .none
+
+      case .onSelectCast(let item):
+        env.routeToCast(item)
+        return .none
+
+      case .onSelectCrew(let item):
+        env.routeToCrew(item)
+        return .none
+
+      case .onSelectSimilarMovie(let item):
+        env.routeToSimilarMovie(item)
         return .none
 
       case .fetchMovieCard(let result):

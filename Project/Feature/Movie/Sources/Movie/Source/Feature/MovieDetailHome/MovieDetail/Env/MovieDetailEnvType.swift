@@ -25,6 +25,12 @@ protocol MovieDetailEnvType {
     -> Effect<Result<MovieDetailDomain.Response.RecommenededMovieResult, CompositeErrorDomain>> { get }
 
   var routeToReview: (MovieDetailDomain.Response.MovieReviewResult) -> Void { get }
+
+  var routeToCast: (MovieDetailDomain.Response.MovieCreditResult) -> Void { get }
+
+  var routeToCrew: (MovieDetailDomain.Response.MovieCreditResult) -> Void { get }
+
+  var routeToSimilarMovie: (MovieDetailDomain.Response.SimilarMovieResult) -> Void { get }
 }
 
 extension MovieDetailEnvType {

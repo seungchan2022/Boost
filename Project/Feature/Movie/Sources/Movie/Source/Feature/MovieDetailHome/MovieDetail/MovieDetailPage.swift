@@ -122,12 +122,14 @@ extension MovieDetailPage: View {
             KeywordListComponent(viewState: keywordListComponent)
           }
 
-          if !castListComponent.profileList.isEmpty {
+          if !castListComponent.itemList.isEmpty {
             Divider()
               .padding(.leading, 16)
 
             // cast
-            CastListComponent(viewState: castListComponent)
+            CastListComponent(
+              viewState: castListComponent,
+              selectAction: { viewStore.send(.onSelectCast($0)) })
           }
 
           if !directorComponent.director.isEmpty {
@@ -138,12 +140,14 @@ extension MovieDetailPage: View {
             DirectorComponent(viewState: directorComponent)
           }
 
-          if !crewListComponent.profileList.isEmpty {
+          if !crewListComponent.itemList.isEmpty {
             Divider()
               .padding(.leading, 16)
 
             // crew
-            CrewListComponent(viewState: crewListComponent)
+            CrewListComponent(
+              viewState: crewListComponent,
+              selectAction: { viewStore.send(.onSelectCrew($0)) })
           }
         }
 
@@ -153,7 +157,9 @@ extension MovieDetailPage: View {
             Divider()
               .padding(.leading, 16)
 
-            SimilarMovieListComponent(viewState: similarMovieListComponent)
+            SimilarMovieListComponent(
+              viewState: similarMovieListComponent,
+              selectAction: { viewStore.send(.onSelectSimilarMovie($0)) })
           }
 
           if !recomendedMovieListComponent.itemList.isEmpty {

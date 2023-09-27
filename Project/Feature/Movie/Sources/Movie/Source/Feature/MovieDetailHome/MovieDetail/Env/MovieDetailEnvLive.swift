@@ -36,4 +36,34 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
         isAnimated: true)
     }
   }
+
+  var routeToCast: (MovieDetailDomain.Response.MovieCreditResult) -> Void {
+    { item in
+      navigator.backOrNext(
+        linkItem: .init(
+          path: Link.Movie.Path.cast.rawValue,
+          items: item.encodeString()),
+        isAnimated: true)
+    }
+  }
+
+  var routeToCrew: (MovieDetailDomain.Response.MovieCreditResult) -> Void {
+    { item in
+      navigator.backOrNext(
+        linkItem: .init(
+          path: Link.Movie.Path.crew.rawValue,
+          items: item.encodeString()),
+        isAnimated: true)
+    }
+  }
+
+  var routeToSimilarMovie: (MovieDetailDomain.Response.SimilarMovieResult) -> Void {
+    { item in
+      navigator.backOrNext(
+        linkItem: .init(
+          path: Link.Movie.Path.similarMovie.rawValue,
+          items: item.encodeString()),
+        isAnimated: true)
+    }
+  }
 }
