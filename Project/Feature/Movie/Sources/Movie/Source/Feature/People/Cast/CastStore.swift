@@ -67,12 +67,12 @@ extension CastStore: Reducer {
         return .none
 
       case .teardown:
-        return .concatenate(
+        return .merge(
           CancelID.allCases.map { .cancel(pageID: pageID, id: $0) })
 
       case .getMovieCast:
         state.fetchMovieCast.isLoading = false
-        return .concatenate(
+        return .merge(
           env.movieCredit(state.movieID)
             .map(Action.fetchMovieCast)
             .cancellable(pageID: pageID, id: CancelID.requestMovieCast, cancelInFlight: true))

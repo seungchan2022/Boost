@@ -28,6 +28,7 @@ extension SimilarMoviePage: View {
   var body: some View {
     ScrollView {
       VStack {
+        Text("similarMoviePage")
         ItemListComponent(viewState: itemListComponentViewState)
       }
       .padding(.leading, 12)

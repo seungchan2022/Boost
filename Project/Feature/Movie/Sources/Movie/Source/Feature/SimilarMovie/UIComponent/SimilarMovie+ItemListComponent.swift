@@ -19,10 +19,6 @@ extension SimilarMoviePage.ItemListComponent: View {
         ForEach(viewState.itemList) { item in
           ItemComponent(item: item)
             .background(.white)
-            .onTapGesture {
-//              selectAction(item.rawValue)
-              print("AAA")
-            }
         }
       }
     }
