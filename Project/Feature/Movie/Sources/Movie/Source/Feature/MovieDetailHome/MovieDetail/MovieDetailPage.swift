@@ -129,7 +129,9 @@ extension MovieDetailPage: View {
             // cast
             CastListComponent(
               viewState: castListComponent,
-              selectAction: { viewStore.send(.onSelectCast($0)) })
+              selectAction: {
+                viewStore.send(.onSelectCast($0))
+              })
           }
 
           if !directorComponent.director.isEmpty {
