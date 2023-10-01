@@ -2,15 +2,15 @@ import Architecture
 import Domain
 import LinkNavigator
 
-struct CrewRouteBuilder<RootNavigator: LinkNavigatorURLEncodedItemProtocol & LinkNavigatorFindLocationUsable> {
+struct CrewRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable>{
 
-  static func generate() -> RouteBuilderOf<RootNavigator, LinkNavigatorURLEncodedItemProtocol.ItemValue> {
+  static func generate() -> RouteBuilderOf<RootNavigator> {
     let matchPath = Link.Movie.Path.crew.rawValue
 
     return .init(matchPath: matchPath) { navigator, item, dependency -> RouteViewController? in
       guard
         let env: MovieSideEffectGroup = dependency.resolve(),
-        let query: MovieDetailDomain.Response.MovieCreditResult = item.decodedObject()
+        let query: MovieDetailDomain.Response.MovieCreditResult = item.decoded()
       else { return .none }
 
       return WrappingController(matchPath: matchPath) {

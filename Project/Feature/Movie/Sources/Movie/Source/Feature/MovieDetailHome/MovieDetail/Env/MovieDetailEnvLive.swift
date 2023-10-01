@@ -11,12 +11,12 @@ struct MovieDetailEnvLive {
 
   let mainQueue: AnySchedulerOf<DispatchQueue>
   let useCaseGroup: MovieSideEffectGroup
-  let navigator: LinkNavigatorURLEncodedItemProtocol
+  let navigator: LinkNavigatorProtocol
 
   init(
     mainQueue: AnySchedulerOf<DispatchQueue> = .main,
     useCaseGroup: MovieSideEffectGroup,
-    navigator: LinkNavigatorURLEncodedItemProtocol)
+    navigator: LinkNavigatorProtocol)
   {
     self.mainQueue = mainQueue
     self.useCaseGroup = useCaseGroup
@@ -32,7 +32,7 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
       navigator.backOrNext(
         linkItem: .init(
           path: Link.Movie.Path.review.rawValue,
-          items: item.encodeString()),
+          items: item.encoded()),
         isAnimated: true)
     }
   }
@@ -42,7 +42,7 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
       navigator.backOrNext(
         linkItem: .init(
           path: Link.Movie.Path.cast.rawValue,
-          items: item.encodeString()),
+          items: item.encoded()),
         isAnimated: true)
     }
   }
@@ -52,7 +52,7 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
       navigator.backOrNext(
         linkItem: .init(
           path: Link.Movie.Path.crew.rawValue,
-          items: item.encodeString()),
+          items: item.encoded()),
         isAnimated: true)
     }
   }
@@ -62,7 +62,7 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
       navigator.backOrNext(
         linkItem: .init(
           path: Link.Movie.Path.similarMovie.rawValue,
-          items: item.encodeString()),
+          items: item.encoded()),
         isAnimated: true)
     }
   }

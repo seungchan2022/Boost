@@ -3,15 +3,15 @@ import Domain
 import LinkNavigator
 import URLEncodedForm
 
-struct MovieDetailRouteBuilder<RootNavigator: LinkNavigatorURLEncodedItemProtocol & LinkNavigatorFindLocationUsable> {
+struct MovieDetailRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable> {
 
-  static func generate() -> RouteBuilderOf<RootNavigator, LinkNavigatorURLEncodedItemProtocol.ItemValue> {
+  static func generate() -> RouteBuilderOf<RootNavigator> {
     let matchPath = Link.Movie.Path.movieDetail.rawValue
 
     return .init(matchPath: matchPath) { navigator, item, dependency -> RouteViewController? in
       guard
         let env: MovieSideEffectGroup = dependency.resolve(),
-        let query: MovieDomain.MovieList.Response.ResultItem = item.decodedObject()
+        let query: MovieDomain.MovieList.Response.ResultItem = item.decoded()
       else { return .none }
 
       return WrappingController(matchPath: matchPath) {

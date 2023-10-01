@@ -1,5 +1,3 @@
-import Foundation
-
 import ProjectDescription
 
 extension DeploymentTarget {

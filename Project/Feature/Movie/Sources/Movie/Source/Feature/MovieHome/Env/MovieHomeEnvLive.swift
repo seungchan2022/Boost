@@ -11,12 +11,12 @@ struct MovieHomeEnvLive {
 
   let mainQueue: AnySchedulerOf<DispatchQueue>
   let useCaseGroup: MovieSideEffectGroup
-  let navigator: LinkNavigatorURLEncodedItemProtocol
+  let navigator: LinkNavigatorProtocol
 
   init(
     mainQueue: AnySchedulerOf<DispatchQueue> = .main,
     useCaseGroup: MovieSideEffectGroup,
-    navigator: LinkNavigatorURLEncodedItemProtocol)
+    navigator: LinkNavigatorProtocol)
   {
     self.mainQueue = mainQueue
     self.useCaseGroup = useCaseGroup
@@ -32,7 +32,7 @@ extension MovieHomeEnvLive: MovieHomeEnvType {
       navigator.backOrNext(
         linkItem: .init(
           path: Link.Movie.Path.movieDetail.rawValue,
-          items: item.encodeString()),
+          items: item.encoded()),
         isAnimated: true)
     }
   }
