@@ -32,12 +32,12 @@ extension MovieDetailPage {
   }
 
   private var movieOverviewComponent: MovieOverviewComponent.ViewState {
-    .init(rawValue: viewStore.fetchMovieCard.value)
+    .init(rawValue: viewStore.fetchMovieCard.value.item)
   }
 
   private var keywordListComponent: KeywordListComponent.ViewState {
     //    .init(rawValue: viewStore.fetchMovieCard.value!.keywordBucket.keywordList)
-    .init(rawValue: viewStore.fetchMovieCard.value?.keywordBucket)
+    .init(rawValue: viewStore.fetchMovieCard.value.item.keywordBucket)
   }
 
   private var castListComponent: CastListComponent.ViewState {
@@ -61,11 +61,11 @@ extension MovieDetailPage {
   }
 
   private var otherPosterListComponent: OtherPosterListComponent.ViewState {
-    .init(rawValue: viewStore.fetchMovieCard.value?.imageBucket)
+    .init(rawValue: viewStore.fetchMovieCard.value.item.imageBucket)
   }
 
   private var backdropImageListComponent: BackdropImageListComponent.ViewState {
-    .init(rawValue: viewStore.fetchMovieCard.value?.imageBucket)
+    .init(rawValue: viewStore.fetchMovieCard.value.item.imageBucket)
   }
 }
 
@@ -194,7 +194,7 @@ extension MovieDetailPage: View {
       .padding(.horizontal, 16)
     } // scrollview
     .background(Color.customBgColor)
-    .navigationTitle(viewStore.fetchMovieCard.value?.title ?? "")
+    .navigationTitle(viewStore.fetchMovieCard.value.item.title)
 
     .animation(.spring(), value: viewStore.state)
     .setRequestFlightView(isLoading: isLoading)
