@@ -32,14 +32,14 @@ extension MovieDetailStore {
     @Heap var fetchMovieCard: FetchState.Data<MovieCardResultScope>
     @Heap var fetchMovieReview: FetchState.Data<MovieDetailDomain.Response.MovieReviewResult>
     @Heap var fetchMovieCredit: FetchState.Data<MovieDetailDomain.Response.MovieCreditResult>
-    @Heap var fetchSimilarMovie: FetchState.Data<MovieDetailDomain.Response.SimilarMovieResult>
-    @Heap var fetchRecommendedMovie: FetchState.Data<MovieDetailDomain.Response.RecommenededMovieResult>
+    @Heap var fetchSimilarMovie: FetchState.Data<SimilarMovieResultScope>
+    @Heap var fetchRecommendedMovie: FetchState.Data<RecommendedMovieResultScope>
   }
-  
+
   public struct MovieCardResultScope: Equatable {
     let imageURL: String
     let item: MovieDetailDomain.Response.MovieCardResult
-    
+
     init(
       imageURL: String = "",
       item: MovieDetailDomain.Response.MovieCardResult = .init())
@@ -47,6 +47,84 @@ extension MovieDetailStore {
       self.imageURL = imageURL
       self.item = item
     }
+  }
+
+  public struct MovieCreditResultScope: Equatable {
+    let id: Int
+    let castList: [CastResultItemScope]
+    let crewList: [CrewResultItemScope]
+
+    init(
+      id: Int = .zero,
+      castList: [CastResultItemScope] = [],
+      crewList: [CrewResultItemScope] = [])
+    {
+      self.id = id
+      self.castList = castList
+      self.crewList = crewList
+    }
+  }
+
+  public struct CastResultItemScope: Equatable, Identifiable {
+    public let imageURL: String
+    public let item: MovieDetailDomain.Response.CastResultItem
+    public var id: Int { item.id }
+  }
+
+  public struct CrewResultItemScope: Equatable, Identifiable {
+    public let imageURL: String
+    public let item: MovieDetailDomain.Response.CrewResultItem
+    public var id: Int { item.id }
+  }
+
+  public struct SimilarMovieResultScope: Equatable {
+    public let page: Int
+    public let totalPage: Int
+    public let totalResult: Int
+    public let resultList: [SimilarMovieResultItemScope]
+
+    init(
+      page: Int = .zero,
+      totalPage: Int = .zero,
+      totalResult: Int = .zero,
+      resultList: [SimilarMovieResultItemScope] = [])
+    {
+      self.page = page
+      self.totalPage = totalPage
+      self.totalResult = totalResult
+      self.resultList = resultList
+    }
+  }
+
+  public struct SimilarMovieResultItemScope: Equatable, Identifiable {
+    public let imageURL: String
+    public let item: MovieDetailDomain.Response.SimilarMovieResultItem
+    public var id: Int { item.id }
+  }
+
+  public struct RecommendedMovieResultScope: Equatable {
+    public let page: Int
+    public let totalPage: Int
+    public let totalResult: Int
+    public let resultList: [RecommendedMovieResultItemScope]
+
+    init(
+      page: Int = .zero,
+      totalPage: Int = .zero,
+      totalResult: Int = .zero,
+      resultList: [RecommendedMovieResultItemScope] = [])
+    {
+      self.page = page
+      self.totalPage = totalPage
+      self.totalResult = totalResult
+      self.resultList = resultList
+    }
+  }
+
+  public struct RecommendedMovieResultItemScope: Equatable, Identifiable {
+    public let imageURL: String
+    public let item: MovieDetailDomain.Response.RecommendedMovieResultItem
+    public var id: Int { item.id }
   }
 }
 
@@ -65,12 +143,13 @@ extension MovieDetailStore {
     case onSelectCast(MovieDetailDomain.Response.MovieCreditResult)
     case onSelectCrew(MovieDetailDomain.Response.MovieCreditResult)
     case onSelectSimilarMovie(MovieDetailDomain.Response.SimilarMovieResult)
+    case onSelectRecommendedMovie(MovieDetailDomain.Response.RecommendedMovieResult)
 
     case fetchMovieCard(Result<MovieCardResultScope, CompositeErrorDomain>)
     case fetchMovieReview(Result<MovieDetailDomain.Response.MovieReviewResult, CompositeErrorDomain>)
     case fetchMovieCredit(Result<MovieDetailDomain.Response.MovieCreditResult, CompositeErrorDomain>)
-    case fetchSimilarMovie(Result<MovieDetailDomain.Response.SimilarMovieResult, CompositeErrorDomain>)
-    case fetchRecommendedMovie(Result<MovieDetailDomain.Response.RecommenededMovieResult, CompositeErrorDomain>)
+    case fetchSimilarMovie(Result<SimilarMovieResultScope, CompositeErrorDomain>)
+    case fetchRecommendedMovie(Result<RecommendedMovieResultScope, CompositeErrorDomain>)
 
     case throwError(CompositeErrorDomain)
   }
@@ -140,6 +219,10 @@ extension MovieDetailStore: Reducer {
 
       case .onSelectSimilarMovie(let item):
         env.routeToSimilarMovie(item)
+        return .none
+
+      case .onSelectRecommendedMovie(let item):
+        env.routeToRecommendedMovie(item)
         return .none
 
       case .fetchMovieCard(let result):

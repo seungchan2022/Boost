@@ -53,11 +53,11 @@ extension MovieDetailPage {
   }
 
   private var similarMovieListComponent: SimilarMovieListComponent.ViewState {
-    .init(rawValue: viewStore.fetchSimilarMovie.value)
+    .init(rawValue: viewStore.fetchSimilarMovie.value.resultList)
   }
 
   private var recomendedMovieListComponent: RecommendedMovieListComponent.ViewState {
-    .init(rawValue: viewStore.fetchRecommendedMovie.value)
+    .init(rawValue: viewStore.fetchRecommendedMovie.value.resultList)
   }
 
   private var otherPosterListComponent: OtherPosterListComponent.ViewState {
@@ -169,7 +169,9 @@ extension MovieDetailPage: View {
               .padding(.leading, 16)
 
             // recommend movieList
-            RecommendedMovieListComponent(viewState: recomendedMovieListComponent)
+            RecommendedMovieListComponent(
+              viewState: recomendedMovieListComponent,
+              selectAction: { viewStore.send(.onSelectRecommendedMovie($0)) })
           }
 
           if !otherPosterListComponent.itemList.isEmpty {

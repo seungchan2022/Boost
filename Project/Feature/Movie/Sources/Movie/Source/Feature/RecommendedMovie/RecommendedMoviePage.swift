@@ -6,6 +6,7 @@ import SwiftUI
 // MARK: - RecommendedMoviePage
 
 struct RecommendedMoviePage {
+
   private let store: StoreOf<RecommendedMovieStore>
   @ObservedObject private var viewStore: ViewStoreOf<RecommendedMovieStore>
 
@@ -15,12 +16,27 @@ struct RecommendedMoviePage {
   }
 }
 
-extension RecommendedMoviePage { }
+extension RecommendedMoviePage {
+  private var itemListComponentViewState: ItemListComponent.ViewState {
+    .init(rawValue: viewStore.fetchRecommendedMovie.value.resultList)
+  }
+}
 
 // MARK: View
 
 extension RecommendedMoviePage: View {
   var body: some View {
-    Text("Recommended movie page")
+    ScrollView {
+      VStack {
+        ItemListComponent(viewState: itemListComponentViewState)
+      }
+      .padding(.leading, 12)
+    }
+    .onAppear {
+      viewStore.send(.getRecommendedMovie)
+    }
+    .onDisappear {
+      viewStore.send(.teardown)
+    }
   }
 }

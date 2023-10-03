@@ -3,7 +3,7 @@ import Domain
 import LinkNavigator
 import URLEncodedForm
 
-struct ReviewRoteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable>{
+struct ReviewRoteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable> {
 
   static func generate() -> RouteBuilderOf<RootNavigator> {
     let matchPath = Link.Movie.Path.review.rawValue

@@ -37,7 +37,7 @@ extension MovieDetailUseCasePlatformMock {
       .decoded()
   }
 
-  private var movieRecommendedPage1: MovieDetailDomain.Response.RecommenededMovieResult {
+  private var movieRecommendedPage1: MovieDetailDomain.Response.RecommendedMovieResult {
     Files.movieDetailRecommended1Json.url
       .mapToData()
       .decoded()
@@ -97,7 +97,7 @@ extension MovieDetailUseCasePlatformMock: MovieDetailUseCase {
   }
 
   public var recommendedMovie: (MovieDetailDomain.Request.RecommendedMovie) -> AnyPublisher<
-    MovieDetailDomain.Response.RecommenededMovieResult,
+    MovieDetailDomain.Response.RecommendedMovieResult,
     CompositeErrorDomain
   > {
     { _ in

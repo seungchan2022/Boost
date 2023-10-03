@@ -7,6 +7,7 @@ import SwiftUI
 extension MovieDetailPage {
   struct RecommendedMovieListComponent {
     let viewState: ViewState
+    let selectAction: (MovieDetailDomain.Response.RecommendedMovieResult) -> Void
   }
 }
 
@@ -28,40 +29,16 @@ extension MovieDetailPage.RecommendedMovieListComponent: View {
           .resizable()
           .frame(width: 8, height: 10)
       }
+      .background(.white)
+      .onTapGesture {
+        selectAction(MovieDetailDomain.Response.RecommendedMovieResult())
+        print("Tapped Recommended Movie")
+      }
 
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack(spacing: 48) {
-          ForEach(viewState.itemList, id: \.id) { item in
-            Button(action: { }) {
-              VStack {
-                Asset.spongeBob.swiftUIImage
-                  .resizable()
-                  .frame(width: 100, height: 160)
-                  .clipShape(RoundedRectangle(cornerRadius: 10))
-                  .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                      .stroke(.black, lineWidth: 1))
-                  .shadow(radius: 10)
-
-                Text(item.title)
-                  .font(.footnote)
-
-                Circle()
-                  .trim(from: 0, to: item.voteAverage / 10)
-                  .stroke(
-                    style: StrokeStyle(lineWidth: 2, dash: [1, 1.5]))
-                  .rotationEffect(.degrees(-90))
-                  .frame(width: 40, height: 40)
-                  .foregroundColor(Color.lineColor(item.voteAverage))
-                  .shadow(color: Color.lineColor(item.voteAverage), radius: 5, x: 0, y: 0)
-                  .overlay(
-                    Text("\(Int(item.voteAverage * 10))%")
-                      .font(.system(size: 10)))
-              }
-            }
-            .foregroundColor(Color(.label))
-            .frame(width: 120)
-            .lineLimit(0)
+          ForEach(viewState.itemList) { item in
+            ItemComponent(item: item)
           }
         }
       }
@@ -77,8 +54,8 @@ extension MovieDetailPage.RecommendedMovieListComponent {
   struct ViewState: Equatable {
     let itemList: [RecommendedMovieItem]
 
-    init(rawValue: MovieDetailDomain.Response.RecommenededMovieResult?) {
-      itemList = (rawValue?.resultList ?? []).map(RecommendedMovieItem.init(rawValue:))
+    init(rawValue: [MovieDetailStore.RecommendedMovieResultItemScope]) {
+      itemList = rawValue.map(RecommendedMovieItem.init(rawValue:))
     }
   }
 }
@@ -89,12 +66,68 @@ extension MovieDetailPage.RecommendedMovieListComponent.ViewState {
   struct RecommendedMovieItem: Equatable, Identifiable {
     let id: Int
     let title: String
+    let imageURL: String
     let voteAverage: Double
+    let rawValue: MovieDetailDomain.Response.RecommendedMovieResultItem
 
-    init(rawValue: MovieDetailDomain.Response.RecommenededMovieResultItem) {
-      id = rawValue.id
-      title = rawValue.title
-      voteAverage = rawValue.voteAverage
+    init(rawValue: MovieDetailStore.RecommendedMovieResultItemScope) {
+      id = rawValue.item.id
+      title = rawValue.item.title
+      imageURL = rawValue.imageURL + (rawValue.item.posterPath ?? "")
+      voteAverage = rawValue.item.voteAverage
+      self.rawValue = rawValue.item
     }
+  }
+}
+
+// MARK: - MovieDetailPage.RecommendedMovieListComponent.ItemComponent
+
+extension MovieDetailPage.RecommendedMovieListComponent {
+  fileprivate struct ItemComponent {
+    let item: ViewState.RecommendedMovieItem
+  }
+}
+
+// MARK: - MovieDetailPage.RecommendedMovieListComponent.ItemComponent + View
+
+extension MovieDetailPage.RecommendedMovieListComponent.ItemComponent: View {
+  var body: some View {
+    Button(action: { }) {
+      VStack {
+        AsyncImage(
+          url: .init(string: item.imageURL),
+          content: { image in
+            image
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+          },
+          placeholder: {
+            Rectangle()
+              .fill(.gray)
+              .frame(width: 90)
+          })
+          .frame(height: 140)
+          .clipShape(RoundedRectangle(cornerRadius: 10))
+          .shadow(radius: 10)
+
+        Text(item.title)
+          .font(.footnote)
+
+        Circle()
+          .trim(from: 0, to: item.voteAverage / 10)
+          .stroke(
+            style: StrokeStyle(lineWidth: 2, dash: [1, 1.5]))
+          .rotationEffect(.degrees(-90))
+          .frame(width: 40, height: 40)
+          .foregroundColor(Color.lineColor(item.voteAverage))
+          .shadow(color: Color.lineColor(item.voteAverage), radius: 5, x: 0, y: 0)
+          .overlay(
+            Text("\(Int(item.voteAverage * 10))%")
+              .font(.system(size: 10)))
+      }
+    }
+    .foregroundColor(Color(.label))
+    .frame(width: 120)
+    .lineLimit(0)
   }
 }

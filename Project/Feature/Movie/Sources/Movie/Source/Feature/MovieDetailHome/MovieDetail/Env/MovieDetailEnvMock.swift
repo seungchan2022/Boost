@@ -28,4 +28,8 @@ extension MovieDetailEnvMock: MovieDetailEnvType {
   var routeToSimilarMovie: (MovieDetailDomain.Response.SimilarMovieResult) -> Void {
     { _ in Void() }
   }
+
+  var routeToRecommendedMovie: (MovieDetailDomain.Response.RecommendedMovieResult) -> Void {
+    { _ in Void() }
+  }
 }

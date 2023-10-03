@@ -3,7 +3,7 @@ import Domain
 import LinkNavigator
 import URLEncodedForm
 
-struct RecommendedMovieRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable>{
+struct RecommendedMovieRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable> {
 
   static func generate() -> RouteBuilderOf<RootNavigator> {
     let matchPath = Link.Movie.Path.recommendedMovie.rawValue
@@ -16,7 +16,7 @@ struct RecommendedMovieRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkN
 
       return WrappingController(matchPath: matchPath) {
         RecommendedMoviePage(store: .init(
-          initialState: RecommendedMovieStore.State(),
+          initialState: RecommendedMovieStore.State(movieID: 565770),
           reducer: {
             RecommendedMovieStore(env: RecommendedMovieEnvLive(
               useCaseGroup: env,

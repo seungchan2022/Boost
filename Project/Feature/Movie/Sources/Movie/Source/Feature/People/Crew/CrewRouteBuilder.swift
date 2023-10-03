@@ -2,7 +2,7 @@ import Architecture
 import Domain
 import LinkNavigator
 
-struct CrewRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable>{
+struct CrewRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable> {
 
   static func generate() -> RouteBuilderOf<RootNavigator> {
     let matchPath = Link.Movie.Path.crew.rawValue

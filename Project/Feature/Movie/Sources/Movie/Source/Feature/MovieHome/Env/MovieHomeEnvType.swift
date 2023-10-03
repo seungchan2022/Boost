@@ -30,9 +30,8 @@ extension MovieHomeEnvType {
         useCaseGroup
           .movieUseCase
           .nowPlaying(.init(locale: Locale.current, page: pageNumber))
-          .map{ $0.serialized(
-            imageURL: useCaseGroup.configurationDomain.entity.baseURL.imageSizeURL(.medium)
-          )}
+          .map { $0.serialized(
+            imageURL: useCaseGroup.configurationDomain.entity.baseURL.imageSizeURL(.medium)) }
           .mapToResult()
           .receive(on: mainQueue)
       }
@@ -84,7 +83,6 @@ extension MovieHomeEnvType {
 
 private let dummyLanguage = "ko-kr"
 private let dummyRegion = "ko"
-
 
 extension MovieDomain.MovieList.Response.NowPlay {
   func serialized(imageURL: String) -> MovieHomeStore.State.NowPlayScope {

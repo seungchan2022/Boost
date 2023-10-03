@@ -3,7 +3,7 @@ import Domain
 import LinkNavigator
 import URLEncodedForm
 
-struct SimilarMovieRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable>{
+struct SimilarMovieRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable> {
 
   static func generate() -> RouteBuilderOf<RootNavigator> {
     let matchPath = Link.Movie.Path.similarMovie.rawValue

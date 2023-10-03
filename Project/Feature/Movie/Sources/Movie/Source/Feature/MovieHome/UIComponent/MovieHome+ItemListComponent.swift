@@ -24,9 +24,9 @@ extension MovieHomePage.ItemListComponent: View {
             .onTapGesture {
               selectAction(item.rawValue)
             }
-            .onAppear {
-              print("AAA ", item.imageURL)
-            }
+//            .onAppear {
+//              print("AAA ", item.imageURL)
+//            }
             .onAppear {
               guard viewState.lastID == item.id else { return }
               nextPageAction()
@@ -131,9 +131,6 @@ extension MovieHomePage.ItemListComponent.ItemComponent: View {
           })
           .frame(height: 140)
           .clipShape(RoundedRectangle(cornerRadius: 10))
-          .overlay(
-            RoundedRectangle(cornerRadius: 10)
-              .stroke(.black, lineWidth: 1))
           .shadow(radius: 10)
 
         VStack(alignment: .leading, spacing: 8) {

@@ -102,7 +102,7 @@ extension MovieDetailUseCasePlatform: MovieDetailUseCase {
   }
 
   public var recommendedMovie: (MovieDetailDomain.Request.RecommendedMovie) -> AnyPublisher<
-    MovieDetailDomain.Response.RecommenededMovieResult,
+    MovieDetailDomain.Response.RecommendedMovieResult,
     CompositeErrorDomain
   > {
     {

@@ -8,6 +8,23 @@ import Foundation
 protocol RecommendedMovieEnvType {
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var useCaseGroup: MovieSideEffectGroup { get }
+
+  var recommendedMovie: (Int)
+    -> Effect<Result<MovieDetailDomain.Response.RecommendedMovieResult, CompositeErrorDomain>> { get }
 }
 
-extension RecommendedMovieEnvType { }
+extension RecommendedMovieEnvType {
+  public var recommendedMovie: (Int)
+    -> Effect<Result<MovieDetailDomain.Response.RecommendedMovieResult, CompositeErrorDomain>>
+  {
+    { id in
+      .publisher {
+        useCaseGroup
+          .movieDetailUseCase
+          .recommendedMovie(.init(id: id))
+          .mapToResult()
+          .receive(on: mainQueue)
+      }
+    }
+  }
+}

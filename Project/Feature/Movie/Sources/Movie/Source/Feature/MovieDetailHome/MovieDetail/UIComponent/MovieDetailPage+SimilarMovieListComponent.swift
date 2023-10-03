@@ -31,7 +31,7 @@ extension MovieDetailPage.SimilarMovieListComponent: View {
       }
       .background(.white)
       .onTapGesture {
-        selectAction(viewState.rawValue)
+        selectAction(MovieDetailDomain.Response.SimilarMovieResult())
         print("Tapped Similar Movie")
       }
 
@@ -53,11 +53,9 @@ extension MovieDetailPage.SimilarMovieListComponent: View {
 extension MovieDetailPage.SimilarMovieListComponent {
   struct ViewState: Equatable {
     let itemList: [SimilarMovieItem]
-    let rawValue: MovieDetailDomain.Response.SimilarMovieResult
 
-    init(rawValue: MovieDetailDomain.Response.SimilarMovieResult?) {
-      itemList = (rawValue?.resultList ?? []).map(SimilarMovieItem.init(rawValue:))
-      self.rawValue = rawValue ?? MovieDetailDomain.Response.SimilarMovieResult()
+    init(rawValue: [MovieDetailStore.SimilarMovieResultItemScope]) {
+      itemList = rawValue.map(SimilarMovieItem.init(rawValue:))
     }
   }
 }
@@ -68,12 +66,16 @@ extension MovieDetailPage.SimilarMovieListComponent.ViewState {
   struct SimilarMovieItem: Equatable, Identifiable {
     let id: Int
     let title: String
+    let imageURL: String
     let voteAverage: Double
+    let rawValue: MovieDetailDomain.Response.SimilarMovieResultItem
 
-    init(rawValue: MovieDetailDomain.Response.SimilarMovieResultItem) {
-      id = rawValue.id
-      title = rawValue.title
-      voteAverage = rawValue.voteAverage
+    init(rawValue: MovieDetailStore.SimilarMovieResultItemScope) {
+      id = rawValue.item.id
+      title = rawValue.item.title
+      imageURL = rawValue.imageURL + (rawValue.item.posterPath ?? "")
+      voteAverage = rawValue.item.voteAverage
+      self.rawValue = rawValue.item
     }
   }
 }
@@ -92,13 +94,20 @@ extension MovieDetailPage.SimilarMovieListComponent.ItemComponent: View {
   var body: some View {
     Button(action: { }) {
       VStack {
-        Asset.spongeBob.swiftUIImage
-          .resizable()
-          .frame(width: 100, height: 140)
+        AsyncImage(
+          url: .init(string: item.imageURL),
+          content: { image in
+            image
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+          },
+          placeholder: {
+            Rectangle()
+              .fill(.gray)
+              .frame(width: 90)
+          })
+          .frame(height: 140)
           .clipShape(RoundedRectangle(cornerRadius: 10))
-          .overlay(
-            RoundedRectangle(cornerRadius: 10)
-              .stroke(.black, lineWidth: 1))
           .shadow(radius: 10)
 
         Text(item.title)

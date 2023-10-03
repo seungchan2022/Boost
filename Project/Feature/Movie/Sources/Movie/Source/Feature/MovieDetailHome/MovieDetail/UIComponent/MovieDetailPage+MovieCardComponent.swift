@@ -14,7 +14,7 @@ extension MovieDetailPage.MovieCardComponent {
   private func formatDate(_ dateString: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
-    
+
     if let date = dateFormatter.date(from: dateString) {
       dateFormatter.dateFormat = "yyyy"
       return dateFormatter.string(from: date)
@@ -26,27 +26,26 @@ extension MovieDetailPage.MovieCardComponent {
 
 extension MovieDetailPage.MovieCardComponent: View {
   var body: some View {
-    
     VStack {
       HStack(spacing: 16) {
         AsyncImage(
           url: .init(string: viewState.movieCard.imageURL),
           content: { $0.resizable() },
           placeholder: { EmptyView() })
-        .frame(width: 100, height: 140)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        
+          .frame(width: 100, height: 140)
+          .clipShape(RoundedRectangle(cornerRadius: 10))
+
         VStack(alignment: .leading, spacing: 4) {
           Spacer()
-          
+
           Group {
             HStack(spacing: .zero) {
               Text(formatDate(viewState.movieCard.releaseDate))
-              
+
               Text(" • ")
-              
+
               Text("\(viewState.movieCard.runningTime) minutes")
-              
+
               Text(" • ")
               Text(viewState.movieCard.status)
             }
@@ -54,7 +53,7 @@ extension MovieDetailPage.MovieCardComponent: View {
           }
           .font(.subheadline)
           .padding(.bottom, 8)
-          
+
           HStack {
             Circle()
               .trim(from: 0, to: viewState.movieCard.voteAverage / 10)
@@ -67,19 +66,19 @@ extension MovieDetailPage.MovieCardComponent: View {
               .overlay(
                 Text("\(Int(viewState.movieCard.voteAverage * 10))%")
                   .font(.caption))
-            
+
             Text("\(viewState.movieCard.voteCounts) ratings")
               .font(.subheadline)
           }
-          
+
           Spacer()
         }
       }
       .foregroundColor(.white)
       .padding(.vertical, 16)
-      
+
       Spacer()
-      
+
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack(spacing: 8) {
           ForEach(viewState.movieCard.generList) { genre in
@@ -100,7 +99,7 @@ extension MovieDetailPage.MovieCardComponent: View {
         }
         .padding(.leading, 24)
         .padding(.bottom, 8)
-        
+
         Spacer()
       }
     }
@@ -108,17 +107,17 @@ extension MovieDetailPage.MovieCardComponent: View {
       AsyncImage(
         url: .init(string: viewState.movieCard.imageURL),
         content: { $0.resizable() }, placeholder: { EmptyView() })
-      .overlay{
-        Rectangle()
-          .background(
-            .regularMaterial,
-            in: Rectangle())
-          .overlay {
-            Rectangle()
-              .fill(.white)
-              .opacity(0.3)
-          }
-      }
+        .overlay {
+          Rectangle()
+            .background(
+              .regularMaterial,
+              in: Rectangle())
+            .overlay {
+              Rectangle()
+                .fill(.white)
+                .opacity(0.3)
+            }
+        }
     }
   }
 }
@@ -128,7 +127,7 @@ extension MovieDetailPage.MovieCardComponent: View {
 extension MovieDetailPage.MovieCardComponent {
   struct ViewState: Equatable {
     let movieCard: MovieItem
-    
+
     init(rawValue: MovieDetailStore.MovieCardResultScope?) {
       movieCard = rawValue.map(MovieItem.init(rawValue:))!
     }
@@ -137,16 +136,9 @@ extension MovieDetailPage.MovieCardComponent {
 
 extension MovieDetailPage.MovieCardComponent.ViewState {
   struct MovieItem: Equatable, Identifiable {
-    let id: Int
-    let imageURL: String
-    let releaseDate: String
-    let runningTime: Int
-    let status: String
-    let voteAverage: Double
-    let voteCounts: Int
-    let generList: [GenreItem]
-    let productionCountryList: [ProductionCountryItem]
-    
+
+    // MARK: Lifecycle
+
     init(rawValue: MovieDetailStore.MovieCardResultScope) {
       id = rawValue.item.id
       imageURL = {
@@ -161,26 +153,38 @@ extension MovieDetailPage.MovieCardComponent.ViewState {
       generList = rawValue.item.genreList.map { GenreItem(rawValue: $0) }
       productionCountryList = rawValue.item.productionCountryList.map { ProductionCountryItem(rawValue: $0) }
     }
+
+    // MARK: Internal
+
+    let id: Int
+    let imageURL: String
+    let releaseDate: String
+    let runningTime: Int
+    let status: String
+    let voteAverage: Double
+    let voteCounts: Int
+    let generList: [GenreItem]
+    let productionCountryList: [ProductionCountryItem]
   }
-  
+
   struct GenreItem: Equatable, Identifiable {
     let id: Int
     let name: String
-    
+
     init(rawValue: MovieDetailDomain.Response.GenreItem) {
       id = rawValue.id
       name = rawValue.name
     }
   }
-  
+
   struct ProductionCountryItem: Equatable {
     let countryCode: String
     let name: String
-    
+
     init(rawValue: MovieDetailDomain.Response.ProductionCountryItem) {
       countryCode = rawValue.countryCode
       name = rawValue.name
     }
   }
-  
+
 }

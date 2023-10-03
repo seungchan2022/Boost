@@ -352,12 +352,35 @@ extension MovieDetailDomain.Response {
   }
 
   public struct SimilarMovieResultItem: Equatable, Codable, Identifiable {
+
+    // MARK: Lifecycle
+
+    public init(
+      id: Int = .zero,
+      posterPath: String? = "",
+      overview: String = "",
+      title: String = "",
+      voteAverage: Double = .zero,
+      releaseDate: String = "")
+    {
+      self.id = id
+      self.posterPath = posterPath
+      self.overview = overview
+      self.title = title
+      self.voteAverage = voteAverage
+      self.releaseDate = releaseDate
+    }
+
+    // MARK: Public
+
     public let id: Int
-    public let posterPath: String
+    public let posterPath: String?
     public let overview: String
     public let title: String
     public let voteAverage: Double
     public let releaseDate: String
+
+    // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
       case id
@@ -369,7 +392,7 @@ extension MovieDetailDomain.Response {
     }
   }
 
-  public struct RecommenededMovieResult: Equatable, Codable {
+  public struct RecommendedMovieResult: Equatable, Codable {
 
     // MARK: Lifecycle
 
@@ -377,7 +400,7 @@ extension MovieDetailDomain.Response {
       page: Int = .zero,
       totalPage: Int = .zero,
       totalResult: Int = .zero,
-      resultList: [RecommenededMovieResultItem] = [])
+      resultList: [RecommendedMovieResultItem] = [])
     {
       self.page = page
       self.totalPage = totalPage
@@ -390,7 +413,7 @@ extension MovieDetailDomain.Response {
     public let page: Int
     public let totalPage: Int
     public let totalResult: Int
-    public let resultList: [RecommenededMovieResultItem]
+    public let resultList: [RecommendedMovieResultItem]
 
     // MARK: Private
 
@@ -402,15 +425,44 @@ extension MovieDetailDomain.Response {
     }
   }
 
-  public struct RecommenededMovieResultItem: Equatable, Codable, Identifiable {
+  public struct RecommendedMovieResultItem: Equatable, Codable, Identifiable {
+
+    // MARK: Lifecycle
+
+    public init(
+      id: Int = .zero,
+      posterPath: String? = "",
+      overview: String = "",
+      title: String = "",
+      voteAverage: Double = .zero,
+      releaseDate: String = "")
+    {
+      self.id = id
+      self.posterPath = posterPath
+      self.overview = overview
+      self.title = title
+      self.voteAverage = voteAverage
+      self.releaseDate = releaseDate
+    }
+
+    // MARK: Public
+
     public let id: Int
+    public let posterPath: String?
+    public let overview: String
     public let title: String
     public let voteAverage: Double
+    public let releaseDate: String
+
+    // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
       case id
+      case posterPath = "poster_path"
+      case overview
       case title
       case voteAverage = "vote_average"
+      case releaseDate = "release_date"
     }
   }
 

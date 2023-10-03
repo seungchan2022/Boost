@@ -3,7 +3,7 @@ import LinkNavigator
 
 // MARK: - MovieRouteBuilderGroup
 
-public struct MovieRouteBuilderGroup<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable>{
+public struct MovieRouteBuilderGroup<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFindLocationUsable> {
   public init() { }
 }
 

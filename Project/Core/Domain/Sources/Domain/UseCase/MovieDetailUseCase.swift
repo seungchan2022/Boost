@@ -11,5 +11,5 @@ public protocol MovieDetailUseCase {
   var similarMovie: (MovieDetailDomain.Request.SimilarMovie)
     -> AnyPublisher<MovieDetailDomain.Response.SimilarMovieResult, CompositeErrorDomain> { get }
   var recommendedMovie: (MovieDetailDomain.Request.RecommendedMovie)
-    -> AnyPublisher<MovieDetailDomain.Response.RecommenededMovieResult, CompositeErrorDomain> { get }
+    -> AnyPublisher<MovieDetailDomain.Response.RecommendedMovieResult, CompositeErrorDomain> { get }
 }

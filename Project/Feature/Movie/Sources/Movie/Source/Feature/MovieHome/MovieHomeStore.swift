@@ -53,7 +53,7 @@ extension MovieHomeStore.State {
       totalPages: Int = .zero,
       totalResult: Int = .zero,
       page: Int = .zero,
-      resultList: [ResultItemScope] = []) 
+      resultList: [ResultItemScope] = [])
     {
       self.totalPages = totalPages
       self.totalResult = totalResult
@@ -64,7 +64,7 @@ extension MovieHomeStore.State {
 
   public struct ResultItemScope: Equatable, Identifiable {
     public let imageURL: String
-    public let item:  MovieDomain.MovieList.Response.ResultItem
+    public let item: MovieDomain.MovieList.Response.ResultItem
     public var id: Int { item.id }
   }
 }

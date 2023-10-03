@@ -66,4 +66,14 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
         isAnimated: true)
     }
   }
+
+  var routeToRecommendedMovie: (MovieDetailDomain.Response.RecommendedMovieResult) -> Void {
+    { item in
+      navigator.backOrNext(
+        linkItem: .init(
+          path: Link.Movie.Path.recommendedMovie.rawValue,
+          items: item.encoded()),
+        isAnimated: true)
+    }
+  }
 }
