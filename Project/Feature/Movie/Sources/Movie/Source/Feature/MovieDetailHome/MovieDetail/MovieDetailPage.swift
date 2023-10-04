@@ -27,7 +27,6 @@ extension MovieDetailPage {
   }
 
   private var movieReviewComponent: MovieReviewComponent.ViewState {
-    //    .init(text: "reviews")
     .init(rawValue: viewStore.fetchMovieReview.value)
   }
 
@@ -36,7 +35,6 @@ extension MovieDetailPage {
   }
 
   private var keywordListComponent: KeywordListComponent.ViewState {
-    //    .init(rawValue: viewStore.fetchMovieCard.value!.keywordBucket.keywordList)
     .init(rawValue: viewStore.fetchMovieCard.value.item.keywordBucket)
   }
 
@@ -45,7 +43,7 @@ extension MovieDetailPage {
   }
 
   private var directorComponent: DirectorComponent.ViewState {
-    .init(rawValue: viewStore.fetchMovieCredit.value)
+    .init(rawValue: viewStore.fetchMovieCredit.value.crewList)
   }
 
   private var crewListComponent: CrewListComponent.ViewState {

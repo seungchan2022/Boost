@@ -31,7 +31,7 @@ extension MovieDetailStore {
 
     @Heap var fetchMovieCard: FetchState.Data<MovieCardResultScope>
     @Heap var fetchMovieReview: FetchState.Data<MovieDetailDomain.Response.MovieReviewResult>
-    @Heap var fetchMovieCredit: FetchState.Data<MovieDetailDomain.Response.MovieCreditResult>
+    @Heap var fetchMovieCredit: FetchState.Data<MovieCreditResultScope>
     @Heap var fetchSimilarMovie: FetchState.Data<SimilarMovieResultScope>
     @Heap var fetchRecommendedMovie: FetchState.Data<RecommendedMovieResultScope>
   }
@@ -49,7 +49,7 @@ extension MovieDetailStore {
     }
   }
 
-  public struct MovieCreditResultScope: Equatable {
+  public struct MovieCreditResultScope: Equatable, Codable {
     let id: Int
     let castList: [CastResultItemScope]
     let crewList: [CrewResultItemScope]
@@ -65,13 +65,13 @@ extension MovieDetailStore {
     }
   }
 
-  public struct CastResultItemScope: Equatable, Identifiable {
+  public struct CastResultItemScope: Equatable, Identifiable, Codable {
     public let imageURL: String
     public let item: MovieDetailDomain.Response.CastResultItem
     public var id: Int { item.id }
   }
 
-  public struct CrewResultItemScope: Equatable, Identifiable {
+  public struct CrewResultItemScope: Equatable, Identifiable, Codable {
     public let imageURL: String
     public let item: MovieDetailDomain.Response.CrewResultItem
     public var id: Int { item.id }
@@ -140,14 +140,14 @@ extension MovieDetailStore {
     case getMovieDetail
 
     case onSelectReview(MovieDetailDomain.Response.MovieReviewResult)
-    case onSelectCast(MovieDetailDomain.Response.MovieCreditResult)
-    case onSelectCrew(MovieDetailDomain.Response.MovieCreditResult)
+    case onSelectCast(MovieDetailStore.MovieCreditResultScope)
+    case onSelectCrew(MovieDetailStore.MovieCreditResultScope)
     case onSelectSimilarMovie(MovieDetailDomain.Response.SimilarMovieResult)
     case onSelectRecommendedMovie(MovieDetailDomain.Response.RecommendedMovieResult)
 
     case fetchMovieCard(Result<MovieCardResultScope, CompositeErrorDomain>)
     case fetchMovieReview(Result<MovieDetailDomain.Response.MovieReviewResult, CompositeErrorDomain>)
-    case fetchMovieCredit(Result<MovieDetailDomain.Response.MovieCreditResult, CompositeErrorDomain>)
+    case fetchMovieCredit(Result<MovieCreditResultScope, CompositeErrorDomain>)
     case fetchSimilarMovie(Result<SimilarMovieResultScope, CompositeErrorDomain>)
     case fetchRecommendedMovie(Result<RecommendedMovieResultScope, CompositeErrorDomain>)
 

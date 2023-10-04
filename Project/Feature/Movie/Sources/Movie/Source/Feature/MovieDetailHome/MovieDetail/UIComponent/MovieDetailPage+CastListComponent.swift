@@ -7,7 +7,7 @@ import SwiftUI
 extension MovieDetailPage {
   struct CastListComponent {
     let viewState: ViewState
-    let selectAction: (MovieDetailDomain.Response.MovieCreditResult) -> Void
+    let selectAction: (MovieDetailStore.MovieCreditResultScope) -> Void
   }
 }
 
@@ -61,12 +61,12 @@ extension MovieDetailPage.CastListComponent: View {
 
 extension MovieDetailPage.CastListComponent {
   struct ViewState: Equatable {
-    let itemList: [CastItem] //
-    let rawValue: MovieDetailDomain.Response.MovieCreditResult
+    let itemList: [CastItem]
+    let rawValue: MovieDetailStore.MovieCreditResultScope
 
-    init(rawValue: MovieDetailDomain.Response.MovieCreditResult?) {
-      itemList = (rawValue?.castList ?? []).map(CastItem.init(rawValue:))
-      self.rawValue = rawValue ?? MovieDetailDomain.Response.MovieCreditResult()
+    init(rawValue: MovieDetailStore.MovieCreditResultScope) {
+      itemList = rawValue.castList.map(CastItem.init(rawValue:))
+      self.rawValue = rawValue
     }
   }
 }
@@ -78,13 +78,15 @@ extension MovieDetailPage.CastListComponent.ViewState {
     let id: Int // cast id
     let name: String
     let character: String
-    let profileImage: String
+    let imageURL: String
+    let rawValue: MovieDetailDomain.Response.CastResultItem
 
-    init(rawValue: MovieDetailDomain.Response.CastResultItem) {
-      id = rawValue.id
-      name = rawValue.name
-      character = rawValue.character
-      profileImage = rawValue.profileImage ?? ""
+    init(rawValue: MovieDetailStore.CastResultItemScope) {
+      id = rawValue.item.id
+      name = rawValue.item.name
+      character = rawValue.item.character
+      imageURL = rawValue.imageURL + (rawValue.item.profileImage ?? "")
+      self.rawValue = rawValue.item
     }
   }
 }
@@ -104,29 +106,32 @@ extension MovieDetailPage.CastListComponent.ItemComponent: View {
     Button(action: { }) {
       VStack(alignment: .center) {
         // API로 받아오는 데이터가 nil이 아니라 ""(빈문자열)로 표시 될수 있으므로 != nil 대신 이런 방식으로 사용
-        if !item.profileImage.isEmpty {
-          Asset.spongeBob.swiftUIImage
-            .resizable()
-            .frame(width: 70, height: 90)
+        if !item.imageURL.isEmpty {
+          AsyncImage(
+            url: .init(string: item.imageURL),
+            content: { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            },
+            placeholder: {
+              Rectangle()
+                .fill(.gray)
+                .frame(width: 70)
+            })
+            .frame(height: 90)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .overlay(
-              RoundedRectangle(cornerRadius: 10)
-                .stroke(.black, lineWidth: 1))
-        } else {
-          RoundedRectangle(cornerRadius: 10)
-            .fill(Color.customBgColor)
-            .frame(width: 70, height: 90)
-        }
 
-        Text(item.name)
-          .font(.footnote)
-          .foregroundColor(Color(.label))
-        Text(item.character)
-          .font(.caption)
-          .foregroundColor(.gray)
+          Text(item.name)
+            .font(.footnote)
+            .foregroundColor(Color(.label))
+          Text(item.character)
+            .font(.caption)
+            .foregroundColor(.gray)
+        }
       }
+      .frame(width: 90)
+      .lineLimit(0)
     }
-    .frame(width: 90)
-    .lineLimit(0)
   }
 }

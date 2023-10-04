@@ -16,7 +16,7 @@ protocol MovieDetailEnvType {
     -> Effect<Result<MovieDetailDomain.Response.MovieReviewResult, CompositeErrorDomain>> { get }
 
   var movieCredit: (Int)
-    -> Effect<Result<MovieDetailDomain.Response.MovieCreditResult, CompositeErrorDomain>> { get }
+    -> Effect<Result<MovieDetailStore.MovieCreditResultScope, CompositeErrorDomain>> { get }
 
   var similarMovie: (Int)
     -> Effect<Result<MovieDetailStore.SimilarMovieResultScope, CompositeErrorDomain>> { get }
@@ -26,9 +26,9 @@ protocol MovieDetailEnvType {
 
   var routeToReview: (MovieDetailDomain.Response.MovieReviewResult) -> Void { get }
 
-  var routeToCast: (MovieDetailDomain.Response.MovieCreditResult) -> Void { get }
+  var routeToCast: (MovieDetailStore.MovieCreditResultScope) -> Void { get }
 
-  var routeToCrew: (MovieDetailDomain.Response.MovieCreditResult) -> Void { get }
+  var routeToCrew: (MovieDetailStore.MovieCreditResultScope) -> Void { get }
 
   var routeToSimilarMovie: (MovieDetailDomain.Response.SimilarMovieResult) -> Void { get }
 
@@ -68,13 +68,15 @@ extension MovieDetailEnvType {
   }
 
   public var movieCredit: (Int)
-    -> Effect<Result<MovieDetailDomain.Response.MovieCreditResult, CompositeErrorDomain>>
+    -> Effect<Result<MovieDetailStore.MovieCreditResultScope, CompositeErrorDomain>>
   {
     { id in
       .publisher {
         useCaseGroup
           .movieDetailUseCase
           .movieCredit(.init(id: id))
+          .map { $0.serialized(
+            imageURL: useCaseGroup.configurationDomain.entity.baseURL.imageSizeURL(.cast)) }
           .mapToResult()
           .receive(on: mainQueue)
       }
@@ -120,9 +122,16 @@ extension MovieDetailDomain.Response.MovieCardResult {
   }
 }
 
-extension MovieDetailDomain.Response.CastResultItem {
-  fileprivate func serialized(imageURL: String) -> MovieDetailStore.CastResultItemScope {
-    .init(imageURL: imageURL, item: self)
+extension MovieDetailDomain.Response.MovieCreditResult {
+  fileprivate func serialized(imageURL: String) -> MovieDetailStore.MovieCreditResultScope {
+    .init(
+      id: id,
+      castList: castList.map {
+        .init(imageURL: imageURL, item: $0)
+      },
+      crewList: crewList.map {
+        .init(imageURL: imageURL, item: $0)
+      })
   }
 }
 

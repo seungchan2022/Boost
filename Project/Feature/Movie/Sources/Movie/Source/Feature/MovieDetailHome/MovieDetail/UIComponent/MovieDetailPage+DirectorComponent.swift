@@ -37,8 +37,8 @@ extension MovieDetailPage.DirectorComponent {
   struct ViewState: Equatable {
     let director: [DirectorItem]
 
-    init(rawValue: MovieDetailDomain.Response.MovieCreditResult?) {
-      director = (rawValue?.crewList ?? []).map(DirectorItem.init(rawValue:))
+    init(rawValue: [MovieDetailStore.CrewResultItemScope]) {
+      director = rawValue.map(DirectorItem.init(rawValue:))
     }
   }
 }
@@ -49,10 +49,12 @@ extension MovieDetailPage.DirectorComponent.ViewState {
   struct DirectorItem: Equatable {
     let name: String
     let job: String
+    let rawValue: MovieDetailDomain.Response.CrewResultItem
 
-    init(rawValue: MovieDetailDomain.Response.CrewResultItem) {
-      name = rawValue.name
-      job = rawValue.job
+    init(rawValue: MovieDetailStore.CrewResultItemScope) {
+      name = rawValue.item.name
+      job = rawValue.item.job
+      self.rawValue = rawValue.item
     }
   }
 }

@@ -7,7 +7,7 @@ import SwiftUI
 extension MovieDetailPage {
   struct CrewListComponent {
     let viewState: ViewState
-    let selectAction: (MovieDetailDomain.Response.MovieCreditResult) -> Void
+    let selectAction: (MovieDetailStore.MovieCreditResultScope) -> Void
   }
 }
 
@@ -61,11 +61,11 @@ extension MovieDetailPage.CrewListComponent: View {
 extension MovieDetailPage.CrewListComponent {
   struct ViewState: Equatable {
     let itemList: [CrewItem]
-    let rawValue: MovieDetailDomain.Response.MovieCreditResult
+    let rawValue: MovieDetailStore.MovieCreditResultScope
 
-    init(rawValue: MovieDetailDomain.Response.MovieCreditResult?) {
-      itemList = (rawValue?.crewList ?? []).map(CrewItem.init(rawValue:))
-      self.rawValue = rawValue ?? MovieDetailDomain.Response.MovieCreditResult()
+    init(rawValue: MovieDetailStore.MovieCreditResultScope) {
+      itemList = rawValue.crewList.map(CrewItem.init(rawValue:))
+      self.rawValue = rawValue
     }
   }
 }
@@ -73,17 +73,19 @@ extension MovieDetailPage.CrewListComponent {
 // MARK: - MovieDetailPage.CrewListComponent.ViewState.CrewItem
 
 extension MovieDetailPage.CrewListComponent.ViewState {
-  struct CrewItem: Equatable, Identifiable, Hashable {
+  struct CrewItem: Equatable, Identifiable {
     let id: Int
     let name: String
     let department: String
-    let profileImage: String
+    let imageURL: String
+    let rawValue: MovieDetailDomain.Response.CrewResultItem
 
-    init(rawValue: MovieDetailDomain.Response.CrewResultItem) {
-      id = rawValue.id
-      name = rawValue.name
-      department = rawValue.department
-      profileImage = rawValue.profileImage ?? ""
+    init(rawValue: MovieDetailStore.CrewResultItemScope) {
+      id = rawValue.item.id
+      name = rawValue.item.name
+      department = rawValue.item.department
+      imageURL = rawValue.imageURL + (rawValue.item.profileImage ?? "")
+      self.rawValue = rawValue.item
     }
   }
 }
@@ -102,29 +104,32 @@ extension MovieDetailPage.CrewListComponent.ItemComponent: View {
   var body: some View {
     Button(action: { }) {
       VStack(alignment: .center) {
-        if !item.profileImage.isEmpty {
-          Asset.spongeBob.swiftUIImage
-            .resizable()
-            .frame(width: 70, height: 90)
+        if !item.imageURL.isEmpty {
+          AsyncImage(
+            url: .init(string: item.imageURL),
+            content: { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            },
+            placeholder: {
+              Rectangle()
+                .fill(.gray)
+                .frame(width: 70)
+            })
+            .frame(height: 90)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .overlay(
-              RoundedRectangle(cornerRadius: 10)
-                .stroke(.black, lineWidth: 1))
-        } else {
-          RoundedRectangle(cornerRadius: 10)
-            .fill(Color.customBgColor)
-            .frame(width: 70, height: 90)
-        }
 
-        Text(item.name)
-          .font(.footnote)
-          .foregroundColor(Color(.label))
-        Text(item.department)
-          .font(.caption)
-          .foregroundColor(.gray)
+          Text(item.name)
+            .font(.footnote)
+            .foregroundColor(Color(.label))
+          Text(item.department)
+            .font(.caption)
+            .foregroundColor(.gray)
+        }
       }
+      .frame(width: 90)
+      .lineLimit(0)
     }
-    .frame(width: 90)
-    .lineLimit(0)
   }
 }

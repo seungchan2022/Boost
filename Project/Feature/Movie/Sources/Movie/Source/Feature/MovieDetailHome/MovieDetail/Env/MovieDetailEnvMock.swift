@@ -17,11 +17,11 @@ extension MovieDetailEnvMock: MovieDetailEnvType {
     { _ in Void() }
   }
 
-  var routeToCast: (MovieDetailDomain.Response.MovieCreditResult) -> Void {
+  var routeToCast: (MovieDetailStore.MovieCreditResultScope) -> Void {
     { _ in Void() }
   }
 
-  var routeToCrew: (MovieDetailDomain.Response.MovieCreditResult) -> Void {
+  var routeToCrew: (MovieDetailStore.MovieCreditResultScope) -> Void {
     { _ in Void() }
   }
 

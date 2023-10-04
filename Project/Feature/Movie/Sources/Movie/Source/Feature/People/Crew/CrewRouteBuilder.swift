@@ -10,7 +10,7 @@ struct CrewRouteBuilder<RootNavigator: LinkNavigatorProtocol & LinkNavigatorFind
     return .init(matchPath: matchPath) { navigator, item, dependency -> RouteViewController? in
       guard
         let env: MovieSideEffectGroup = dependency.resolve(),
-        let query: MovieDetailDomain.Response.MovieCreditResult = item.decoded()
+        let query: MovieDetailStore.MovieCreditResultScope = item.decoded()
       else { return .none }
 
       return WrappingController(matchPath: matchPath) {

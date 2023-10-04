@@ -37,7 +37,7 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
     }
   }
 
-  var routeToCast: (MovieDetailDomain.Response.MovieCreditResult) -> Void {
+  var routeToCast: (MovieDetailStore.MovieCreditResultScope) -> Void {
     { item in
       navigator.backOrNext(
         linkItem: .init(
@@ -47,7 +47,7 @@ extension MovieDetailEnvLive: MovieDetailEnvType {
     }
   }
 
-  var routeToCrew: (MovieDetailDomain.Response.MovieCreditResult) -> Void {
+  var routeToCrew: (MovieDetailStore.MovieCreditResultScope) -> Void {
     { item in
       navigator.backOrNext(
         linkItem: .init(
